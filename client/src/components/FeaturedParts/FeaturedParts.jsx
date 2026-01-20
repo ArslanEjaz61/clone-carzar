@@ -142,14 +142,19 @@ const FeaturedParts = () => {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
-                    arrows: true
+                    slidesToScroll: 1,
+                    arrows: true,
+                    centerMode: false
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 2,
-                    arrows: true
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: true,
+                    centerMode: true,
+                    centerPadding: '30px'
                 }
             }
         ]
