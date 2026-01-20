@@ -168,12 +168,30 @@
     }
 
     .slider-item {
-        padding: 0 8px;
+        padding: 0 6px;
     }
 
+    /* Force cards to display vertically on mobile */
     .slider-item .car-card {
         width: 100% !important;
         height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        min-width: 200px;
+    }
+
+    /* Fix image container on mobile slider */
+    .slider-item .car-card-image {
+        width: 100% !important;
+        height: 140px !important;
+        min-width: 100% !important;
+        border-radius: 12px 12px 0 0 !important;
+    }
+
+    .slider-item .car-card-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
     }
 
     .slider-arrow {
@@ -190,7 +208,7 @@
         right: 4px;
     }
 
-    /* Force Slick Slider to show 1 card on mobile */
+    /* Force Slick Slider to show proper cards on mobile */
     .featured-slider .slick-slider {
         overflow: visible;
     }
@@ -207,10 +225,10 @@
     .featured-slider .slick-slide {
         height: auto !important;
         float: none !important;
+        min-width: 200px;
     }
 
     .featured-slider .slick-slide>div {
         height: 100%;
     }
 }
-
