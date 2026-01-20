@@ -1,0 +1,1020 @@
+/* Checkout Page Styles */
+.checkout-page {
+    padding: var(--spacing-xl) 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+}
+
+/* Header */
+.checkout-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: var(--spacing-xl);
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray-600);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--primary);
+}
+
+.checkout-header h1 {
+    font-size: 1.75rem;
+    color: var(--gray-800);
+}
+
+/* Progress Steps */
+.checkout-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: var(--spacing-xl);
+    background: var(--white);
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gray-200);
+    color: var(--gray-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active .step-number {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(167, 139, 250, 0.4);
+}
+
+.progress-step.completed .step-number {
+    background: #10B981;
+    color: var(--white);
+}
+
+.progress-step span {
+    font-size: 13px;
+    color: var(--gray-500);
+    font-weight: 500;
+}
+
+.progress-step.active span {
+    color: var(--primary);
+}
+
+.progress-line {
+    width: 80px;
+    height: 3px;
+    background: var(--gray-200);
+    margin: 0 16px;
+    border-radius: 2px;
+}
+
+/* Content Layout */
+.checkout-content {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+/* Main Section */
+.checkout-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.checkout-section {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.checkout-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.25rem;
+    color: var(--gray-800);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.checkout-section h2 svg {
+    color: var(--primary);
+}
+
+/* Form Styles */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.form-group label svg {
+    color: var(--gray-400);
+    font-size: 12px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 14px 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    background: var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1);
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Payment Methods */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.payment-option:hover {
+    border-color: var(--gray-300);
+    background: var(--gray-50);
+}
+
+.payment-option.selected {
+    border-color: var(--primary);
+    background: var(--primary-50);
+}
+
+.payment-radio {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--gray-300);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.payment-option.selected .payment-radio {
+    border-color: var(--primary);
+}
+
+.radio-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: transparent;
+    transition: background 0.2s ease;
+}
+
+.payment-option.selected .radio-dot {
+    background: var(--primary);
+}
+
+.payment-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.payment-icon.cod {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+}
+
+.payment-icon.nayapay {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    color: white;
+}
+
+.payment-details {
+    flex: 1;
+}
+
+.payment-details h3 {
+    font-size: 16px;
+    color: var(--gray-800);
+    margin-bottom: 4px;
+}
+
+.payment-details p {
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-bottom: 8px;
+}
+
+.payment-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.payment-tag.popular {
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+.payment-tag.instant {
+    background: #E0E7FF;
+    color: #4F46E5;
+}
+
+/* NayaPay Instructions */
+.nayapay-instructions {
+    margin-top: 24px;
+    padding: 24px;
+    background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
+    border-radius: 12px;
+    border: 1px solid #DDD6FE;
+}
+
+.nayapay-instructions h3 {
+    font-size: 16px;
+    color: #5B21B6;
+    margin-bottom: 16px;
+}
+
+.nayapay-details {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row .label {
+    color: var(--gray-600);
+    font-size: 14px;
+}
+
+.detail-row .value {
+    font-weight: 600;
+    color: var(--gray-800);
+    font-size: 15px;
+}
+
+.detail-row.amount .value.highlight {
+    font-size: 18px;
+    color: #7C3AED;
+}
+
+.value-with-copy {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #7C3AED;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.copy-btn:hover {
+    background: #6D28D9;
+}
+
+.nayapay-note {
+    font-size: 13px;
+    color: #5B21B6;
+}
+
+.nayapay-note p {
+    margin: 6px 0;
+}
+
+/* Checkout Navigation */
+.checkout-nav-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: var(--spacing-lg);
+}
+
+.btn-next {
+    padding: 16px 32px;
+    font-size: 16px;
+}
+
+.btn-next:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Order Summary Sidebar */
+.checkout-sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+.order-summary-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.order-summary-card h3 {
+    font-size: 18px;
+    color: var(--gray-800);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.summary-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: var(--spacing-lg);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.summary-item {
+    display: flex;
+    gap: 12px;
+}
+
+.item-image {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-qty {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-title {
+    font-size: 13px;
+    color: var(--gray-700);
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.item-price {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Summary Totals */
+.summary-totals {
+    border-top: 1px solid var(--gray-200);
+    padding-top: 16px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 14px;
+    color: var(--gray-600);
+}
+
+.total-row .free {
+    color: #10B981;
+    font-weight: 600;
+}
+
+.total-row.grand-total {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-800);
+    border-top: 2px solid var(--gray-200);
+    padding-top: 16px;
+    margin-top: 8px;
+}
+
+.total-row.grand-total span:last-child {
+    color: var(--primary);
+}
+
+.free-shipping-banner {
+    margin-top: 16px;
+    padding: 12px;
+    background: #D1FAE5;
+    color: #059669;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Empty Checkout */
+.empty-checkout {
+    text-align: center;
+    padding: 80px 20px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+}
+
+.empty-checkout svg {
+    font-size: 60px;
+    color: var(--gray-300);
+    margin-bottom: 24px;
+}
+
+.empty-checkout h2 {
+    color: var(--gray-800);
+    margin-bottom: 8px;
+}
+
+.empty-checkout p {
+    color: var(--gray-500);
+    margin-bottom: 24px;
+}
+
+/* Order Confirmation */
+.order-confirmation {
+    text-align: center;
+    padding: 60px 40px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.confirmation-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 24px;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.confirmation-icon svg {
+    font-size: 50px;
+    color: white;
+}
+
+.order-confirmation h1 {
+    font-size: 1.75rem;
+    color: var(--gray-800);
+    margin-bottom: 12px;
+}
+
+.order-number {
+    font-size: 16px;
+    color: var(--gray-600);
+    margin-bottom: 32px;
+}
+
+.order-number strong {
+    color: var(--primary);
+    font-size: 18px;
+}
+
+.confirmation-details {
+    margin-bottom: 32px;
+}
+
+.payment-info-box {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.payment-info-box.cod-info {
+    background: #D1FAE5;
+}
+
+.payment-info-box.nayapay-info {
+    background: #EDE9FE;
+}
+
+.payment-info-box svg {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.cod-info svg {
+    color: #059669;
+}
+
+.nayapay-info svg {
+    color: #7C3AED;
+}
+
+.payment-info-box h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.cod-info h3 {
+    color: #059669;
+}
+
+.nayapay-info h3 {
+    color: #5B21B6;
+}
+
+.payment-info-box p {
+    font-size: 14px;
+    color: var(--gray-700);
+    margin: 4px 0;
+}
+
+.payment-details-confirm {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+.payment-note {
+    font-size: 13px !important;
+    color: var(--gray-500) !important;
+    margin-top: 8px;
+}
+
+.confirmation-message {
+    margin-bottom: 32px;
+}
+
+.confirmation-message p {
+    font-size: 14px;
+    color: var(--gray-600);
+    margin: 8px 0;
+}
+
+.confirmation-actions .btn {
+    padding: 14px 32px;
+    font-size: 16px;
+}
+
+/* NayaPay Preview */
+.nayapay-preview {
+    margin-top: 20px;
+    padding: 16px;
+    background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
+    border-radius: 10px;
+    border: 1px solid #DDD6FE;
+}
+
+.preview-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #7C3AED;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.preview-details {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.preview-details p {
+    margin: 4px 0;
+    color: var(--gray-700);
+}
+
+.preview-amount {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #7C3AED !important;
+}
+
+/* NayaPay Payment Section */
+.nayapay-payment-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Payment Steps */
+.payment-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    background: var(--gray-50);
+    border-radius: 12px;
+}
+
+.payment-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.step-badge {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    font-size: 15px;
+    color: var(--gray-800);
+    margin-bottom: 4px;
+}
+
+.step-content p {
+    font-size: 13px;
+    color: var(--gray-500);
+}
+
+/* NayaPay Details Card */
+.nayapay-details-card {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+}
+
+.nayapay-details-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+}
+
+.nayapay-details-card .card-body {
+    padding: 20px;
+    background: white;
+}
+
+.nayapay-details-card .detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.nayapay-details-card .detail-row:last-child {
+    border-bottom: none;
+}
+
+.nayapay-details-card .value.large {
+    font-size: 18px;
+    font-weight: 700;
+    color: #7C3AED;
+}
+
+.amount-row {
+    background: #F5F3FF;
+    margin: 0 -20px;
+    padding: 16px 20px !important;
+    border-radius: 0 0 12px 12px;
+}
+
+.amount-row .amount {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    color: #7C3AED !important;
+}
+
+/* Transaction ID Input */
+.transaction-input-section {
+    padding: 24px;
+    background: #FFFBEB;
+    border-radius: 12px;
+    border: 1px solid #FCD34D;
+}
+
+.transaction-input-section label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 12px;
+}
+
+.transaction-input-section label svg {
+    color: #D97706;
+}
+
+.transaction-input-wrapper input {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    border: 2px solid var(--gray-300);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.transaction-input-wrapper input:focus {
+    border-color: #7C3AED;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    outline: none;
+}
+
+.transaction-input-wrapper input.error {
+    border-color: #EF4444;
+}
+
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    color: #EF4444;
+    font-size: 13px;
+}
+
+.helper-text {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--gray-500);
+}
+
+/* WhatsApp Notice */
+.whatsapp-sent-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    background: #D1FAE5;
+    border-radius: 10px;
+    margin-bottom: 24px;
+}
+
+.whatsapp-sent-notice svg {
+    font-size: 20px;
+    color: #25D366;
+}
+
+.whatsapp-sent-notice p {
+    font-size: 14px;
+    color: #059669;
+    font-weight: 500;
+}
+
+/* Security Badge */
+.security-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px;
+    background: var(--gray-100);
+    border-radius: 8px;
+    color: var(--gray-600);
+    font-size: 13px;
+}
+
+.security-badge svg {
+    color: #10B981;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .checkout-content {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-sidebar {
+        position: static;
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .checkout-progress {
+        padding: 16px;
+        flex-wrap: wrap;
+    }
+
+    .progress-line {
+        width: 30px;
+        margin: 0 8px;
+    }
+
+    .step-number {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .progress-step span {
+        font-size: 11px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group {
+        grid-column: 1;
+    }
+
+    .form-group.full-width {
+        grid-column: 1;
+    }
+
+    .checkout-nav-buttons {
+        flex-direction: column;
+    }
+
+    .btn-next {
+        width: 100%;
+    }
+
+    .payment-step {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .nayapay-details-card .detail-row {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .checkout-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .payment-option {
+        flex-wrap: wrap;
+    }
+
+    .order-confirmation {
+        padding: 40px 20px;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+

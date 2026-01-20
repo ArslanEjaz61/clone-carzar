@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build outputs
+client/dist/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.production
+*.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Uploads (if large)
+# server/uploads/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Coverage
+coverage/
+
+# PM2
+.pm2/

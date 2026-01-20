@@ -1,0 +1,511 @@
+/* Orders List Page */
+.orders-list-page {
+    padding: 24px;
+}
+
+.orders-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 16px;
+}
+
+.orders-loading .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f0f0f0;
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.orders-header {
+    margin-bottom: 24px;
+}
+
+.orders-header h1 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    color: #1F2937;
+    margin-bottom: 4px;
+}
+
+.orders-header h1 svg {
+    color: var(--primary);
+}
+
+.orders-header p {
+    color: #6B7280;
+    font-size: 14px;
+}
+
+/* Filters */
+.orders-filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 10px;
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-box svg {
+    color: #9CA3AF;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-tabs button {
+    padding: 10px 16px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #6B7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-tabs button:hover {
+    background: #F9FAFB;
+}
+
+.filter-tabs button.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Orders Table */
+.orders-table-wrapper {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orders-table th {
+    background: #F9FAFB;
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.orders-table td {
+    padding: 16px;
+    border-bottom: 1px solid #F3F4F6;
+    font-size: 14px;
+    color: #374151;
+}
+
+.orders-table tr:hover {
+    background: #F9FAFB;
+}
+
+.order-number {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.customer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.customer-info strong {
+    color: #1F2937;
+}
+
+.customer-info small {
+    color: #9CA3AF;
+    font-size: 12px;
+}
+
+.order-total {
+    font-weight: 600;
+    color: #1F2937;
+}
+
+.payment-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.payment-method {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.payment-method.cod {
+    background: #D1FAE5;
+    color: #059669;
+}
+
+.payment-method.nayapay {
+    background: #EDE9FE;
+    color: #7C3AED;
+}
+
+.payment-status,
+.order-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    text-transform: capitalize;
+}
+
+.order-date {
+    font-size: 13px;
+    color: #6B7280;
+}
+
+.order-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-view {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-view:hover {
+    background: var(--primary-dark);
+}
+
+.no-orders {
+    text-align: center;
+    padding: 60px 20px !important;
+    color: #9CA3AF;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.order-modal {
+    background: white;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.modal-header h2 {
+    font-size: 1.25rem;
+    color: #1F2937;
+}
+
+.close-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F3F4F6;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #E5E7EB;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.modal-section {
+    margin-bottom: 24px;
+}
+
+.modal-section:last-child {
+    margin-bottom: 0;
+}
+
+.modal-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #6B7280;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modal-section h3 svg {
+    color: var(--primary);
+}
+
+.customer-details p {
+    margin: 6px 0;
+    color: #374151;
+    font-size: 14px;
+}
+
+.customer-details p svg {
+    color: #9CA3AF;
+    margin-right: 8px;
+}
+
+/* Order Items */
+.order-items {
+    background: #F9FAFB;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.order-item:last-of-type {
+    border-bottom: none;
+}
+
+.item-name {
+    flex: 1;
+    color: #374151;
+}
+
+.item-qty {
+    color: #6B7280;
+    margin: 0 16px;
+}
+
+.item-price {
+    font-weight: 600;
+    color: #1F2937;
+}
+
+.order-total-row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+    margin-top: 12px;
+    border-top: 2px solid #E5E7EB;
+}
+
+.order-total-row strong {
+    font-size: 16px;
+    color: var(--primary);
+}
+
+/* Payment Details */
+.payment-details {
+    background: #F9FAFB;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.payment-details p {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.payment-details code {
+    background: #E5E7EB;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: white;
+    text-transform: capitalize;
+}
+
+.payment-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.payment-actions .btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-success {
+    background: #10B981;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #059669;
+}
+
+.btn-danger {
+    background: #EF4444;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #DC2626;
+}
+
+/* Status Buttons */
+.status-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.status-btn {
+    padding: 10px 16px;
+    background: #F3F4F6;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #6B7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.status-btn:hover {
+    background: #E5E7EB;
+}
+
+.status-btn.active {
+    background: #D1FAE5;
+    border-color: #10B981;
+    color: #059669;
+}
+
+.status-btn.cancelled {
+    color: #EF4444;
+}
+
+.status-btn.cancelled.active {
+    background: #FEE2E2;
+    border-color: #EF4444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .orders-filters {
+        flex-direction: column;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .orders-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .orders-table {
+        min-width: 800px;
+    }
+
+    .order-modal {
+        max-height: 80vh;
+    }
+
+    .status-buttons {
+        flex-direction: column;
+    }
+}
+

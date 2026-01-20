@@ -1,0 +1,216 @@
+/* Featured Cars Section Styles */
+.featured-cars {
+    padding: 60px 0;
+    background-color: #FFFFFF;
+}
+
+.featured-cars.section:nth-of-type(even) {
+    background-color: var(--gray-50);
+}
+
+/* Section Header */
+.featured-cars .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.featured-cars .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1E293B;
+}
+
+.view-all-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #8B5CF6;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.view-all-link:hover {
+    gap: 12px;
+    color: #7C3AED;
+}
+
+.view-all-link svg {
+    font-size: 12px;
+}
+
+/* Slider Container */
+.featured-slider {
+    position: relative;
+    padding: 0 50px;
+}
+
+.slider-item {
+    padding: 0 10px;
+}
+
+/* Custom Arrows */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    border: 2px solid #E4E4E7;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #3F3F46;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.slider-arrow:hover {
+    background-color: #8B5CF6;
+    border-color: #8B5CF6;
+    color: #FFFFFF;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.slider-prev {
+    left: 0;
+}
+
+.slider-next {
+    right: 0;
+}
+
+/* Loading State */
+.featured-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #E4E4E7;
+    border-top-color: #8B5CF6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .featured-slider {
+        padding: 0 40px;
+    }
+
+    .slider-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .featured-cars {
+        padding: 40px 0;
+    }
+
+    .featured-cars .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .featured-cars .section-title {
+        font-size: 1.4rem;
+    }
+
+    .featured-slider {
+        padding: 0 35px;
+    }
+
+    .slider-item {
+        padding: 0 8px;
+    }
+
+    .slider-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .featured-cars {
+        padding: 30px 0;
+    }
+
+    .featured-cars .section-title {
+        font-size: 1.25rem;
+    }
+
+    .featured-slider {
+        padding: 0 40px;
+        margin: 0;
+    }
+
+    .slider-item {
+        padding: 0 8px;
+    }
+
+    .slider-item .car-card {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .slider-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 11px;
+    }
+
+    .slider-prev {
+        left: 4px;
+    }
+
+    .slider-next {
+        right: 4px;
+    }
+
+    /* Force Slick Slider to show 1 card on mobile */
+    .featured-slider .slick-slider {
+        overflow: visible;
+    }
+
+    .featured-slider .slick-list {
+        overflow: hidden !important;
+    }
+
+    .featured-slider .slick-track {
+        display: flex !important;
+        align-items: stretch;
+    }
+
+    .featured-slider .slick-slide {
+        height: auto !important;
+        float: none !important;
+    }
+
+    .featured-slider .slick-slide>div {
+        height: 100%;
+    }
+}
+

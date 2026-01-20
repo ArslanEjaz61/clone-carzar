@@ -1,0 +1,347 @@
+/* Mobile Bottom Navigation */
+.mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #FFFFFF;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 6px 0 8px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+    border-top: 1px solid #E4E4E7;
+}
+
+@media (max-width: 768px) {
+    .mobile-bottom-nav {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+    }
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-decoration: none;
+    color: #71717A;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 6px 8px;
+    transition: all 0.2s ease;
+    min-width: 50px;
+    flex: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile-nav-item .nav-icon {
+    font-size: 20px;
+    transition: all 0.2s ease;
+}
+
+.mobile-nav-item .nav-label {
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.mobile-nav-item.active {
+    color: #8B5CF6;
+}
+
+.mobile-nav-item.active .nav-icon {
+    transform: scale(1.05);
+}
+
+/* Main Buy Button */
+.mobile-nav-item.main-btn {
+    padding: 0;
+    position: relative;
+    top: -12px;
+    flex: 0 0 auto;
+}
+
+.main-btn-circle {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    border-radius: 50%;
+    color: #FFFFFF;
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-item.main-btn.active .main-btn-circle {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4);
+    transform: rotate(45deg);
+}
+
+.main-btn-circle:active {
+    transform: scale(0.95);
+}
+
+.main-btn-circle .plus-icon {
+    font-size: 18px;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav-item.main-btn .main-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #71717A;
+    margin-top: 4px;
+}
+
+/* Overlay */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    animation: fadeIn 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .mobile-nav-overlay {
+        display: block;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Buy Options Popup */
+.buy-options-popup {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    flex-direction: row;
+    gap: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.buy-options-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 768px) {
+    .buy-options-popup {
+        display: flex;
+    }
+}
+
+.buy-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    animation: slideUp 0.3s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.buy-options-popup.active .buy-option {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.buy-option-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 22px;
+    color: #FFFFFF;
+}
+
+.buy-option-icon.auto-parts {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+
+.buy-option-icon.used-cars {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+}
+
+.buy-option-icon.new-cars {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+}
+
+.buy-option span {
+    font-size: 11px;
+    font-weight: 600;
+    color: #1E293B;
+    white-space: nowrap;
+}
+
+.buy-option:active {
+    transform: scale(0.95);
+}
+
+/* More Options Popup */
+.more-options-popup {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 16px;
+    z-index: 999;
+    flex-direction: column;
+    gap: 4px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    min-width: 160px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+}
+
+.more-options-popup.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .more-options-popup {
+        display: flex;
+    }
+}
+
+.more-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: left;
+}
+
+.more-option:hover {
+    background-color: #F4F4F5;
+}
+
+.more-option svg {
+    font-size: 16px;
+    color: #8B5CF6;
+}
+
+.more-option span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1E293B;
+}
+
+.more-option.logout svg {
+    color: #EF4444;
+}
+
+.more-option.logout span {
+    color: #EF4444;
+}
+
+/* Extra small screens */
+@media (max-width: 375px) {
+    .mobile-nav-item .nav-icon {
+        font-size: 18px;
+    }
+
+    .mobile-nav-item .nav-label {
+        font-size: 9px;
+    }
+
+    .main-btn-circle {
+        width: 44px;
+        height: 44px;
+    }
+
+    .main-btn-circle .plus-icon {
+        font-size: 16px;
+    }
+
+    .mobile-nav-item.main-btn {
+        top: -10px;
+    }
+
+    .buy-option {
+        padding: 10px 12px;
+    }
+
+    .buy-option-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+
+    .buy-option span {
+        font-size: 10px;
+    }
+}
+
+/* Hide desktop elements on mobile */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 70px;
+    }
+
+    .footer {
+        margin-bottom: 60px;
+        padding-bottom: 20px;
+    }
+}
+

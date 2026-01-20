@@ -1,0 +1,511 @@
+/* Car Card Styles */
+.car-card {
+    display: block;
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    height: 100%;
+}
+
+.car-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Image Container */
+.car-card-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    background-color: var(--gray-200);
+}
+
+.car-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.car-card:hover .car-card-image img {
+    transform: scale(1.05);
+}
+
+/* Featured Badge */
+.car-card-badge {
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--accent-orange);
+    color: var(--white);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    z-index: 1;
+}
+
+.car-card-badge svg {
+    font-size: 10px;
+}
+
+/* Favorite Button */
+.car-card-favorite {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: var(--radius-full);
+    color: var(--gray-500);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    z-index: 1;
+}
+
+.car-card-favorite:hover {
+    background-color: var(--white);
+    transform: scale(1.1);
+}
+
+.car-card-favorite.active {
+    color: #ef4444;
+}
+
+/* Image Count Overlay */
+.car-card-image-count {
+    position: absolute;
+    bottom: var(--spacing-sm);
+    right: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--white);
+    font-size: var(--font-size-xs);
+    border-radius: var(--radius-sm);
+}
+
+/* Card Content */
+.car-card-content {
+    padding: var(--spacing-md);
+}
+
+/* Title */
+.car-card-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.car-card:hover .car-card-title {
+    color: var(--accent-orange);
+}
+
+/* Location */
+.car-card-location {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+    margin-bottom: var(--spacing-sm);
+}
+
+.car-card-location svg {
+    font-size: 12px;
+    color: var(--accent-orange);
+}
+
+/* Specs */
+.car-card-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--font-size-xs);
+    color: var(--gray-600);
+}
+
+.spec-item svg {
+    font-size: 12px;
+    color: var(--gray-400);
+}
+
+/* Engine Capacity */
+.car-card-engine {
+    font-size: var(--font-size-xs);
+    color: var(--gray-500);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Price */
+.car-card-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price-value {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--accent-orange);
+}
+
+/* Contact Buttons */
+.car-contact-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--gray-200);
+}
+
+.contact-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.call-btn {
+    background-color: var(--gray-100);
+    color: var(--gray-700);
+    border: 1px solid var(--gray-300);
+}
+
+.call-btn:hover {
+    background-color: var(--gray-200);
+}
+
+.whatsapp-btn {
+    background-color: #25D366;
+    color: white;
+    border: 1px solid #25D366;
+}
+
+.whatsapp-btn:hover {
+    background-color: #20BD5A;
+}
+
+.contact-btn svg {
+    font-size: 14px;
+}
+
+/* =========================================
+   RESPONSIVE STYLES - PROFESSIONAL MOBILE
+   ========================================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .car-card-image {
+        height: 170px;
+    }
+
+    .car-card-content {
+        padding: 14px;
+    }
+
+    .car-card-title {
+        font-size: 0.95rem;
+    }
+}
+
+/* Large Mobile / Small Tablet */
+@media (max-width: 768px) {
+    .car-card {
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .car-card:hover {
+        transform: none;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .car-card-image {
+        height: 150px;
+    }
+
+    .car-card-content {
+        padding: 12px;
+    }
+
+    .car-card-title {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+        line-height: 1.3;
+    }
+
+    .car-card-location {
+        font-size: 0.75rem;
+        margin-bottom: 6px;
+    }
+
+    .car-card-specs {
+        gap: 6px;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+    }
+
+    .spec-item {
+        font-size: 10px;
+        padding: 2px 6px;
+        background: #F1F5F9;
+        border-radius: 4px;
+    }
+
+    .spec-item svg {
+        font-size: 10px;
+    }
+
+    .price-value {
+        font-size: 1rem;
+    }
+
+    .car-card-favorite {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .car-card-badge {
+        padding: 3px 8px;
+        font-size: 10px;
+    }
+
+    /* Contact Buttons Mobile */
+    .car-contact-actions {
+        margin-top: 10px;
+        padding-top: 10px;
+        gap: 6px;
+    }
+
+    .contact-btn {
+        padding: 8px 10px;
+        font-size: 11px;
+        border-radius: 6px;
+    }
+
+    .contact-btn svg {
+        font-size: 12px;
+    }
+}
+
+/* Mobile - Single Column Full Width Cards */
+@media (max-width: 576px) {
+    .car-card {
+        display: flex;
+        flex-direction: row;
+        border-radius: 12px;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        background: #FFFFFF;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        border: 1px solid #F1F5F9;
+    }
+
+    .car-card-image {
+        width: 130px;
+        min-width: 130px;
+        height: 140px;
+        border-radius: 12px 0 0 12px;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+
+    .car-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .car-card-content {
+        flex: 1;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 0;
+    }
+
+    .car-card-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #1E293B;
+        margin-bottom: 4px;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .car-card-location {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.7rem;
+        color: #64748B;
+        margin-bottom: 6px;
+    }
+
+    .car-card-location svg {
+        font-size: 10px;
+        color: #A78BFA;
+    }
+
+    .car-card-specs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 8px;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .spec-item {
+        font-size: 9px;
+        padding: 2px 6px;
+        background: #F1F5F9;
+        border-radius: 4px;
+        color: #475569;
+    }
+
+    .spec-item svg {
+        display: none;
+    }
+
+    .car-card-price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .price-value {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #A78BFA;
+    }
+
+    .car-card-badge {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        padding: 3px 6px;
+        font-size: 9px;
+        border-radius: 4px;
+    }
+
+    .car-card-favorite {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+    }
+
+    .car-card-image-count {
+        display: none;
+    }
+
+    /* Contact Buttons - Side by Side Compact */
+    .car-contact-actions {
+        display: flex;
+        gap: 6px;
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid #F1F5F9;
+    }
+
+    .contact-btn {
+        flex: 1;
+        padding: 6px 8px;
+        font-size: 10px;
+        border-radius: 6px;
+        gap: 4px;
+    }
+
+    .contact-btn svg {
+        font-size: 11px;
+    }
+
+    .call-btn {
+        background: #F8FAFC;
+        color: #475569;
+        border: 1px solid #E2E8F0;
+    }
+
+    .whatsapp-btn {
+        background: #25D366;
+        color: white;
+        border: none;
+    }
+}
+
+/* Extra Small Phones */
+@media (max-width: 400px) {
+    .car-card-image {
+        width: 110px;
+        min-width: 110px;
+        height: 120px;
+    }
+
+    .car-card-content {
+        padding: 10px;
+    }
+
+    .car-card-title {
+        font-size: 0.85rem;
+    }
+
+    .price-value {
+        font-size: 0.9rem;
+    }
+
+    .contact-btn {
+        padding: 5px 6px;
+        font-size: 9px;
+    }
+
+    .contact-btn span {
+        display: none;
+    }
+
+    .contact-btn svg {
+        font-size: 14px;
+    }
+}
+
