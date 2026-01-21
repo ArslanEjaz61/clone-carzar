@@ -229,7 +229,7 @@
     }
 
     .parts-slide-item {
-        padding: 0 8px;
+        padding: 0 6px;
     }
 
     /* Card proper sizing on mobile */
@@ -238,10 +238,11 @@
         flex-direction: column;
         height: auto;
         min-height: auto;
+        width: 100% !important;
     }
 
     .part-card-image {
-        height: 160px;
+        height: 120px;
         width: 100%;
     }
 
@@ -252,44 +253,45 @@
     }
 
     .part-card-content {
-        padding: 12px;
+        padding: 10px;
     }
 
     .part-card-title {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         -webkit-line-clamp: 2;
+        line-clamp: 2;
         margin-bottom: 4px;
     }
 
     .part-card-category {
-        font-size: 0.75rem;
-        margin-bottom: 6px;
+        font-size: 0.65rem;
+        margin-bottom: 4px;
     }
 
     .part-card-location {
-        font-size: 0.7rem;
-        margin-bottom: 8px;
+        font-size: 0.6rem;
+        margin-bottom: 6px;
     }
 
     .part-card-price {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     .parts-slider-arrow {
-        width: 32px;
-        height: 32px;
-        font-size: 11px;
+        width: 28px;
+        height: 28px;
+        font-size: 10px;
     }
 
     .parts-slider-prev {
-        left: 4px;
+        left: 2px;
     }
 
     .parts-slider-next {
-        right: 4px;
+        right: 2px;
     }
 
-    /* Slick slider fixes */
+    /* Slick slider fixes for mobile */
     .parts-slider .slick-track {
         display: flex !important;
         align-items: stretch;
@@ -297,32 +299,46 @@
 
     .parts-slider .slick-slide {
         height: auto !important;
+        float: none !important;
     }
 
     .parts-slider .slick-slide>div {
         height: 100%;
+        width: 100%;
+    }
+
+    .parts-slider .slick-list {
+        overflow: hidden !important;
     }
 }
 
 /* Extra small phones */
 @media (max-width: 400px) {
     .parts-slider {
-        padding: 0 35px;
+        padding: 0 30px;
+    }
+
+    .parts-slide-item {
+        padding: 0 4px;
     }
 
     .part-card-image {
-        height: 140px;
+        height: 100px;
     }
 
     .part-card-content {
-        padding: 10px;
+        padding: 8px;
     }
 
     .part-card-title {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .part-card-category {
+        font-size: 0.6rem;
     }
 
     .part-card-price {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 }

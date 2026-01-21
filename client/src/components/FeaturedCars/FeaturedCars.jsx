@@ -215,9 +215,9 @@ const FeaturedCars = ({ title = "Featured Used Cars", type = "used", cars: propC
                 }
             },
             {
-                breakpoint: 640,
+                breakpoint: 600,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     slidesToScroll: 1,
                     arrows: true,
                     centerMode: false,

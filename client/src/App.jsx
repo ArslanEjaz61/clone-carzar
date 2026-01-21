@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import OfferBanner from './components/OfferBanner/OfferBanner';
 
 // Main Pages
 import Home from './pages/Home';
@@ -40,6 +41,7 @@ import MobileNav from './components/MobileNav/MobileNav';
 // Layout component for pages with Header, Footer and Mobile Nav
 const MainLayout = ({ children }) => (
   <>
+    <OfferBanner />
     <Header />
     {children}
     <Footer />

@@ -1,0 +1,105 @@
+/* Simple Purple Scrolling Offer Banner */
+.offer-banner {
+    position: relative;
+    background: #8b5cf6;
+    padding: 10px 40px 10px 0;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+/* Marquee Container */
+.marquee-container {
+    overflow: hidden;
+    width: 100%;
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 12s linear infinite;
+}
+
+.marquee-content span {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding-right: 50px;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-33.33%);
+    }
+}
+
+/* Close Button */
+.offer-close {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #ffffff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 10px;
+}
+
+.offer-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* =============================================
+   RESPONSIVE STYLES
+   ============================================= */
+
+@media (max-width: 768px) {
+    .offer-banner {
+        padding: 8px 35px 8px 0;
+    }
+
+    .marquee-content span {
+        font-size: 0.8rem;
+    }
+
+    .offer-close {
+        right: 8px;
+        width: 22px;
+        height: 22px;
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 480px) {
+    .offer-banner {
+        padding: 6px 30px 6px 0;
+    }
+
+    .marquee-content span {
+        font-size: 0.75rem;
+    }
+
+    .marquee-content {
+        animation: marquee 10s linear infinite;
+    }
+
+    .offer-close {
+        right: 6px;
+        width: 20px;
+        height: 20px;
+        font-size: 8px;
+    }
+}
