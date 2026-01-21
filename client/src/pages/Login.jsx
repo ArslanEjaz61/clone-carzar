@@ -68,8 +68,7 @@ const Login = () => {
                 <div className="auth-branding">
                     <div className="auth-branding-content">
                         <Link to="/" className="auth-logo">
-                            <FaCar />
-                            <span>CarZar</span>
+                            <img src="/carzar-logo.png" alt="CarZar" className="auth-logo-img" />
                         </Link>
                         <h1>Welcome Back!</h1>
                         <p>Sign in to access your account, manage your listings, and find your perfect vehicle.</p>
