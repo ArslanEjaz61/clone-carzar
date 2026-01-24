@@ -84,7 +84,7 @@ const Signup = () => {
                 <div className="auth-branding">
                     <div className="auth-branding-content">
                         <Link to="/" className="auth-logo">
-                            <img src="/carzar-logo-new.png" alt="CarZar" />
+                            <img src="/carzar-logo-white-zar.png" alt="CarZar" />
                         </Link>
                         <h1>Join CarZar!</h1>
                         <p>Create an account to list your cars, save favorites, and connect with buyers and sellers.</p>
