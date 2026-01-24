@@ -364,10 +364,10 @@
     border-bottom: 1px solid var(--gray-200);
 }
 
-.mobile-menu-logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.mobile-menu-header .logo .logo-image {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
 }
 
 .mobile-menu-logo .logo-image {

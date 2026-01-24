@@ -157,8 +157,7 @@ const Header = () => {
         {/* Menu Header */}
         <div className="mobile-menu-header">
           <Link to="/" className="logo" onClick={() => setMobileMenuOpen(false)}>
-            <FaCar className="logo-icon" />
-            <span className="logo-text">CarZar</span>
+            <img src="/carzar-white-logo.png" alt="CarZar" className="logo-image" />
           </Link>
           <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
             <FaTimes />
