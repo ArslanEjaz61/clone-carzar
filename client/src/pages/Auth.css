@@ -73,10 +73,10 @@
 }
 
 .auth-logo img {
-    height: 60px;
+    height: 160px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
 }
 
 .auth-branding-content h1 {
@@ -485,5 +485,9 @@
 
     .auth-submit {
         padding: 14px;
+    }
+
+    .auth-logo img {
+        height: 100px;
     }
 }
