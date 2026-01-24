@@ -69,17 +69,14 @@
 .auth-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
     margin-bottom: 32px;
-    color: #ffffff;
-    font-size: 1.75rem;
-    font-weight: 700;
 }
 
-.auth-logo svg {
-    font-size: 44px;
-    color: #fbbf24;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+.auth-logo img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
 }
 
 .auth-branding-content h1 {
