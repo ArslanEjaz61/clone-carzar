@@ -94,50 +94,65 @@
     position: relative;
 }
 
+
 .input-wrapper .input-icon {
     position: absolute;
-    left: 16px;
+    left: 20px;
     top: 50%;
     transform: translateY(-50%);
     color: #A1A1AA;
-    font-size: 16px;
+    font-size: 18px;
+    z-index: 1;
+    pointer-events: none;
+    transition: color 0.3s ease;
 }
 
 .input-wrapper input {
     width: 100%;
-    padding: 14px 16px 14px 48px;
+    padding: 16px 20px 16px 56px;
     border: 2px solid #E4E4E7;
     border-radius: 12px;
     font-size: 1rem;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     background-color: #FAFAFA;
+    font-weight: 500;
+    color: #1E293B;
 }
 
 .input-wrapper input:focus {
     border-color: #8B5CF6;
     background-color: #FFFFFF;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.input-wrapper input:focus+.input-icon {
+    color: #8B5CF6;
 }
 
 .input-wrapper input::placeholder {
     color: #A1A1AA;
+    font-weight: 400;
 }
 
 .toggle-password {
     position: absolute;
-    right: 16px;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     background: none;
     border: none;
     color: #71717A;
     cursor: pointer;
-    padding: 4px;
+    padding: 8px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    border-radius: 50%;
 }
 
 .toggle-password:hover {
     color: #8B5CF6;
+    background-color: rgba(139, 92, 246, 0.1);
 }
 
 /* Login Button */
@@ -230,4 +245,3 @@
         padding: 32px 24px;
     }
 }
-

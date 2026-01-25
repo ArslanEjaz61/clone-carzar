@@ -68,7 +68,7 @@ const Login = () => {
                 <div className="auth-branding">
                     <div className="auth-branding-content">
                         <Link to="/" className="auth-logo">
-                            <img src="/carzar-white-logo.png" alt="CarZar" />
+                            <img src="/logo-white.png" alt="CarZar" />
                         </Link>
                         <h1>Welcome Back!</h1>
                         <p>Sign in to access your account, manage your listings, and find your perfect vehicle.</p>
@@ -156,15 +156,6 @@ const Login = () => {
                                 {loading ? 'Signing In...' : 'Sign In'}
                             </button>
                         </form>
-
-                        {/* Demo Login Button */}
-                        <button
-                            type="button"
-                            className="btn btn-secondary btn-lg auth-submit demo-btn"
-                            onClick={handleDemoLogin}
-                        >
-                            Demo Login (Skip Backend)
-                        </button>
 
                         <div className="auth-divider">
                             <span>or continue with</span>

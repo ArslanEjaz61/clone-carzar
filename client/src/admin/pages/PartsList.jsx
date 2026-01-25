@@ -23,12 +23,8 @@ const PartsList = () => {
                 setTotalPages(response.data.pagination?.pages || 1);
             }
         } catch (error) {
-            console.log('Using sample data');
-            setParts([
-                { _id: '1', title: 'Toyota Corolla Front Bumper', category: 'Body Parts', price: 25000, condition: 'Used', city: 'Lahore', isActive: true },
-                { _id: '2', title: 'Honda Civic Headlights Set', category: 'Electrical', price: 35000, condition: 'New', city: 'Karachi', isActive: true },
-                { _id: '3', title: 'Alloy Rims 15 inch', category: 'Wheels & Tires', price: 45000, condition: 'Used', city: 'Islamabad', isActive: true }
-            ]);
+            console.error('Error fetching parts:', error);
+            setParts([]);
         }
         setLoading(false);
     };
@@ -40,8 +36,14 @@ const PartsList = () => {
             await adminAPI.deletePart(partId);
             fetchParts();
         } catch (error) {
-            setParts(prev => prev.filter(part => part._id !== partId));
+            console.error('Error deleting part:', error);
         }
+    };
+
+    const getImageUrl = (url) => {
+        if (!url) return 'https://via.placeholder.com/80x60?text=Part';
+        if (url.startsWith('http')) return url;
+        return `http://localhost:5000${url}`;
     };
 
     return (
@@ -87,7 +89,7 @@ const PartsList = () => {
                                     <td className="car-info">
                                         <div className="car-image">
                                             <img
-                                                src={part.images?.[0]?.url || 'https://via.placeholder.com/80x60?text=Part'}
+                                                src={getImageUrl(part.images?.[0]?.url)}
                                                 alt={part.title}
                                             />
                                         </div>

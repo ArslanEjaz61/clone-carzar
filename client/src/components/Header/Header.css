@@ -340,8 +340,9 @@
     position: fixed;
     top: 0;
     left: -100%;
-    width: 85%;
-    max-width: 320px;
+    width: 30%;
+    max-width: 280px;
+    min-width: 250px;
     height: 100vh;
     background-color: var(--white);
     z-index: 999;
@@ -392,6 +393,14 @@
     padding: 16px 0;
     flex: 1;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent body scroll when menu is open */
+body.mobile-menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
 
 .mobile-nav-item {

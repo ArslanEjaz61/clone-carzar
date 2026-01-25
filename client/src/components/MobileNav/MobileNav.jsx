@@ -10,6 +10,7 @@ const MobileNav = () => {
     const { isAuthenticated, logout } = useAuth();
     const [buyMenuOpen, setBuyMenuOpen] = useState(false);
     const [moreMenuOpen, setMoreMenuOpen] = useState(false);
+    const [searchMenuOpen, setSearchMenuOpen] = useState(false);
 
     const isActive = (path) => {
         if (path === '/') {
@@ -21,16 +22,25 @@ const MobileNav = () => {
     const handleBuyClick = () => {
         setBuyMenuOpen(!buyMenuOpen);
         setMoreMenuOpen(false);
+        setSearchMenuOpen(false);
     };
 
     const handleMoreClick = () => {
         setMoreMenuOpen(!moreMenuOpen);
         setBuyMenuOpen(false);
+        setSearchMenuOpen(false);
+    };
+
+    const handleSearchClick = () => {
+        setSearchMenuOpen(!searchMenuOpen);
+        setBuyMenuOpen(false);
+        setMoreMenuOpen(false);
     };
 
     const handleOptionClick = (path) => {
         setBuyMenuOpen(false);
         setMoreMenuOpen(false);
+        setSearchMenuOpen(false);
         navigate(path);
     };
 
@@ -43,14 +53,49 @@ const MobileNav = () => {
     const closeMenues = () => {
         setBuyMenuOpen(false);
         setMoreMenuOpen(false);
+        setSearchMenuOpen(false);
     };
 
     return (
         <>
             {/* Overlay */}
-            {(buyMenuOpen || moreMenuOpen) && (
+            {(buyMenuOpen || moreMenuOpen || searchMenuOpen) && (
                 <div className="mobile-nav-overlay" onClick={closeMenues} />
             )}
+
+            {/* Search Options Popup */}
+            <div className={`search-options-popup ${searchMenuOpen ? 'active' : ''}`}>
+                <button
+                    className="search-option"
+                    onClick={() => handleOptionClick('/used-cars')}
+                    style={{ animationDelay: '0ms' }}
+                >
+                    <div className="search-option-icon">
+                        <FaCarSide />
+                    </div>
+                    <span>Search Used Cars</span>
+                </button>
+                <button
+                    className="search-option"
+                    onClick={() => handleOptionClick('/new-cars')}
+                    style={{ animationDelay: '50ms' }}
+                >
+                    <div className="search-option-icon">
+                        <FaCarAlt />
+                    </div>
+                    <span>Search New Cars</span>
+                </button>
+                <button
+                    className="search-option"
+                    onClick={() => handleOptionClick('/parts')}
+                    style={{ animationDelay: '100ms' }}
+                >
+                    <div className="search-option-icon">
+                        <FaTools />
+                    </div>
+                    <span>Search Auto Parts</span>
+                </button>
+            </div>
 
             {/* Buy Options Popup */}
             <div className={`buy-options-popup ${buyMenuOpen ? 'active' : ''}`}>
@@ -132,14 +177,13 @@ const MobileNav = () => {
                     <span className="nav-label">Home</span>
                 </Link>
 
-                <Link
-                    to="/used-cars"
-                    className={`mobile-nav-item ${isActive('/used-cars') ? 'active' : ''}`}
-                    onClick={closeMenues}
+                <button
+                    className={`mobile-nav-item ${searchMenuOpen ? 'active' : ''}`}
+                    onClick={handleSearchClick}
                 >
                     <FaSearch className="nav-icon" />
                     <span className="nav-label">Search</span>
-                </Link>
+                </button>
 
                 <button
                     className={`mobile-nav-item main-btn ${buyMenuOpen ? 'active' : ''}`}

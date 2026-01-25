@@ -26,36 +26,28 @@ const Parts = () => {
     ];
     const cities = ['Lahore', 'Karachi', 'Islamabad', 'Rawalpindi', 'Faisalabad', 'Multan'];
 
+    const getImageUrl = (url) => {
+        if (!url) return 'https://via.placeholder.com/300x200?text=No+Image';
+        if (url.startsWith('http')) return url;
+        return `http://localhost:5000${url}`;
+    };
+
     useEffect(() => {
         fetchParts();
     }, []);
-
-    const samplePartsData = [
-        { _id: '1', title: 'Toyota Corolla Front Bumper 2015-2023', category: 'Body Parts', condition: 'Used', price: 25000, city: 'Lahore', images: [{ url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400' }], contactPhone: '0300-1234567' },
-        { _id: '2', title: 'Honda Civic LED Headlights Set', category: 'Electrical', condition: 'New', price: 65000, city: 'Karachi', images: [{ url: 'https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=400' }], contactPhone: '0312-9876543' },
-        { _id: '3', title: 'Alloy Rims 17 inch Universal', category: 'Wheels & Tires', condition: 'Used', price: 55000, city: 'Islamabad', images: [{ url: 'https://images.unsplash.com/photo-1611567069404-f4c47ae53c5f?w=400' }], contactPhone: '0321-5555555' },
-        { _id: '4', title: 'Leather Seat Covers Full Set', category: 'Interior', condition: 'New', price: 18000, city: 'Lahore', images: [{ url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400' }], contactPhone: '0300-1111111' },
-        { _id: '5', title: 'Engine Oil Filter Pack', category: 'Engine Parts', condition: 'New', price: 3500, city: 'Rawalpindi', images: [{ url: 'https://images.unsplash.com/photo-1612825173281-9a193378527e?w=400' }], contactPhone: '0333-2222222' },
-        { _id: '6', title: 'Brake Pads Set Front & Rear', category: 'Brakes', condition: 'New', price: 8500, city: 'Faisalabad', images: [{ url: 'https://images.unsplash.com/photo-1593697909683-bccb1b9e68a4?w=400' }], contactPhone: '0345-4444444' },
-        { _id: '7', title: 'Car Audio System Pioneer', category: 'Accessories', condition: 'New', price: 35000, city: 'Lahore', images: [{ url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400' }], contactPhone: '0300-7777777' },
-        { _id: '8', title: 'Suspension Kit Complete', category: 'Suspension', condition: 'New', price: 45000, city: 'Karachi', images: [{ url: 'https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=400' }], contactPhone: '0312-8888888' }
-    ];
 
     const fetchParts = async () => {
         setLoading(true);
         try {
             const response = await partsAPI.getAll(filters);
-            // Check if response has data AND data array has items
             if (response.data?.data?.length > 0) {
                 setParts(response.data.data);
             } else {
-                // Use sample data if API returns empty
-                console.log('No parts from API, using sample data');
-                setParts(samplePartsData);
+                setParts([]);
             }
         } catch (error) {
-            console.log('API error, using sample data');
-            setParts(samplePartsData);
+            console.error('Error fetching parts:', error);
+            setParts([]);
         }
         setLoading(false);
     };
@@ -86,7 +78,6 @@ const Parts = () => {
         e.preventDefault();
         e.stopPropagation();
         addToCart(part);
-        // Optional: Show success message
         alert('Item added to cart!');
     };
 
@@ -196,8 +187,12 @@ const Parts = () => {
                                     <Link to={`/parts/${part._id}`} key={part._id} className="part-card">
                                         <div className="part-image">
                                             <img
-                                                src={part.images?.[0]?.url || 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400'}
+                                                src={getImageUrl(part.images?.[0]?.url)}
                                                 alt={part.title}
+                                                onError={(e) => {
+                                                    e.target.onerror = null;
+                                                    e.target.src = 'https://via.placeholder.com/300x200?text=No+Image';
+                                                }}
                                             />
                                             <span className={`condition-badge ${part.condition?.toLowerCase()}`}>
                                                 {part.condition}

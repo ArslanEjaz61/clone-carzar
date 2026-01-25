@@ -7,70 +7,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './FeaturedParts.css';
 
-// Sample data for when backend has no parts
-const sampleParts = [
-    {
-        _id: 'sample-1',
-        title: 'Toyota Corolla Side Mirror - Left',
-        category: 'Body Parts',
-        price: 8500,
-        condition: 'New',
-        compatibleMakes: ['Toyota'],
-        city: 'Lahore',
-        images: [{ url: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=400' }]
-    },
-    {
-        _id: 'sample-2',
-        title: 'Honda Civic Air Filter',
-        category: 'Filters & Fluids',
-        price: 2500,
-        condition: 'New',
-        compatibleMakes: ['Honda'],
-        city: 'Karachi',
-        images: [{ url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400' }]
-    },
-    {
-        _id: 'sample-3',
-        title: 'Brake Pads Set - Universal',
-        category: 'Brakes',
-        price: 4500,
-        condition: 'New',
-        compatibleMakes: ['Toyota', 'Honda', 'Suzuki'],
-        city: 'Islamabad',
-        images: [{ url: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400' }]
-    },
-    {
-        _id: 'sample-4',
-        title: 'LED Headlight Bulbs Pair',
-        category: 'Electrical',
-        price: 3200,
-        condition: 'New',
-        compatibleMakes: ['Universal'],
-        city: 'Rawalpindi',
-        images: [{ url: 'https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=400' }]
-    },
-    {
-        _id: 'sample-5',
-        title: 'Engine Oil 5W-30 (4L)',
-        category: 'Filters & Fluids',
-        price: 6500,
-        condition: 'New',
-        compatibleMakes: ['Universal'],
-        city: 'Lahore',
-        images: [{ url: 'https://images.unsplash.com/photo-1635784063388-1ff609e36f3a?w=400' }]
-    },
-    {
-        _id: 'sample-6',
-        title: 'Alloy Wheel 16 inch',
-        category: 'Tyres & Wheels',
-        price: 15000,
-        condition: 'Used',
-        compatibleMakes: ['Honda', 'Toyota'],
-        city: 'Multan',
-        images: [{ url: 'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400' }]
-    }
-];
-
 // Custom arrow components
 const NextArrow = ({ onClick }) => (
     <button className="parts-slider-arrow parts-slider-next" onClick={onClick}>
@@ -92,6 +28,12 @@ const formatPrice = (price) => {
     return `PKR ${price.toLocaleString()}`;
 };
 
+const getImageUrl = (url) => {
+    if (!url) return 'https://via.placeholder.com/300x200?text=No+Image';
+    if (url.startsWith('http')) return url;
+    return `http://localhost:5000${url}`;
+};
+
 const FeaturedParts = () => {
     const [parts, setParts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -107,15 +49,18 @@ const FeaturedParts = () => {
             if (response.data?.data?.length > 0) {
                 setParts(response.data.data);
             } else {
-                // Use sample data if no backend data
-                setParts(sampleParts);
+                setParts([]);
             }
         } catch (error) {
-            console.log('Using sample parts - backend not available');
-            setParts(sampleParts);
+            console.error('Error fetching featured parts:', error);
+            setParts([]);
         }
         setLoading(false);
     };
+
+    if (!loading && parts.length === 0) {
+        return null; // Hide section if no parts
+    }
 
     const settings = {
         dots: false,
@@ -182,7 +127,7 @@ const FeaturedParts = () => {
                                     <Link to={`/parts/${part._id}`} className="part-card-new">
                                         <div className="part-card-image">
                                             <img
-                                                src={part.images?.[0]?.url || 'https://via.placeholder.com/300x200?text=No+Image'}
+                                                src={getImageUrl(part.images?.[0]?.url)}
                                                 alt={part.title}
                                             />
                                             <span className={`part-condition ${part.condition?.toLowerCase()}`}>
