@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { partsAPI } from '../services/api';
+import { useCart } from '../context/CartContext';
 import { FaCogs, FaFilter, FaTimes, FaShoppingCart, FaBolt } from 'react-icons/fa';
 import './Parts.css';
 
 const Parts = () => {
+    const navigate = useNavigate();
+    const { addToCart } = useCart();
     const [parts, setParts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showFilters, setShowFilters] = useState(false);
@@ -77,6 +80,21 @@ const Parts = () => {
             priceMin: '',
             priceMax: ''
         });
+    };
+
+    const handleAddToCart = (e, part) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart(part);
+        // Optional: Show success message
+        alert('Item added to cart!');
+    };
+
+    const handleBuyNow = (e, part) => {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart(part);
+        navigate('/checkout');
     };
 
     return (
@@ -191,10 +209,16 @@ const Parts = () => {
                                             <p className="price">PKR {part.price?.toLocaleString()}</p>
                                             <p className="location">{part.city}</p>
                                             <div className="part-actions">
-                                                <button className="btn btn-secondary add-to-cart-btn" onClick={(e) => e.preventDefault()}>
+                                                <button
+                                                    className="btn btn-secondary add-to-cart-btn"
+                                                    onClick={(e) => handleAddToCart(e, part)}
+                                                >
                                                     <FaShoppingCart /> Add to Cart
                                                 </button>
-                                                <button className="btn btn-primary buy-now-btn" onClick={(e) => e.preventDefault()}>
+                                                <button
+                                                    className="btn btn-primary buy-now-btn"
+                                                    onClick={(e) => handleBuyNow(e, part)}
+                                                >
                                                     <FaBolt /> Buy Now
                                                 </button>
                                             </div>

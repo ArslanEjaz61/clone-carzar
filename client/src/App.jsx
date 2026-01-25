@@ -37,6 +37,7 @@ import './styles/responsive.css';
 
 // Mobile Nav
 import MobileNav from './components/MobileNav/MobileNav';
+import ScrollToTop from './components/ScrollToTop';
 
 // Layout component for pages with Header, Footer and Mobile Nav
 const MainLayout = ({ children }) => (
@@ -54,6 +55,7 @@ function App() {
     <AuthProvider>
       <CartProvider>
         <Router>
+          <ScrollToTop />
           <div className="app">
             <Routes>
               {/* Auth pages without header/footer */}

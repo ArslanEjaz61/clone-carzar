@@ -215,7 +215,7 @@ const PartDetail = () => {
 
     const handleBuyNow = () => {
         addToCart(part, quantity);
-        navigate('/cart');
+        navigate('/checkout');
     };
 
     if (loading) {

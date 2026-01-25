@@ -32,23 +32,17 @@ const Header = () => {
 
   const navItems = [
     {
-      label: 'Used Cars',
+      label: 'Home',
+      path: '/',
+      hasDropdown: false
+    },
+    {
+      label: 'Cars',
       path: '/used-cars',
       hasDropdown: true,
       dropdownItems: [
-        { label: 'Search Used Cars', path: '/used-cars' },
-        { label: 'Featured Cars', path: '/used-cars?featured=true' },
-        { label: 'Certified Cars', path: '/used-cars?certified=true' }
-      ]
-    },
-    {
-      label: 'New Cars',
-      path: '/new-cars',
-      hasDropdown: true,
-      dropdownItems: [
-        { label: 'Browse New Cars', path: '/new-cars' },
-        { label: 'New Car Prices', path: '/new-cars/prices' },
-        { label: 'Compare Cars', path: '/compare' }
+        { label: 'Used Cars', path: '/used-cars' },
+        { label: 'New Cars', path: '/new-cars' }
       ]
     },
     {
