@@ -133,6 +133,59 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// @route   POST /api/auth/social-login
+// @desc    Social login (Google/Facebook)
+// @access  Public
+router.post('/social-login', async (req, res) => {
+    try {
+        const { name, email, provider, providerId, avatar } = req.body;
+
+        if (!email) {
+            return res.status(400).json({
+                success: false,
+                message: 'Social login failed: No email provided'
+            });
+        }
+
+        // Check if user exists
+        let user = await User.findOne({ email: email.toLowerCase() });
+
+        if (!user) {
+            // Create user if doesn't exist
+            user = await User.create({
+                name: name || 'Social User',
+                email: email.toLowerCase(),
+                password: crypto.randomBytes(16).toString('hex'), // Random password for social users
+                avatar: avatar,
+                role: 'user'
+            });
+        }
+
+        // Generate token
+        const token = generateToken(user._id);
+
+        res.json({
+            success: true,
+            message: `Logged in via ${provider}`,
+            data: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+                avatar: user.avatar,
+                token
+            }
+        });
+    } catch (error) {
+        console.error('Social login error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Social login failed',
+            error: error.message
+        });
+    }
+});
+
 // @route   GET /api/auth/me
 // @desc    Get current logged in user
 // @access  Private

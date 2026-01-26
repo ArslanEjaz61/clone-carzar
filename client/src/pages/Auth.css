@@ -194,26 +194,24 @@
 
 .input-icon {
     position: absolute;
-    left: 18px;
+    left: 20px;
     top: 50%;
     transform: translateY(-50%);
-    /* Precise vertical centering */
     color: #8b5cf6;
-    font-size: 18px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 2;
+    font-size: 19px;
+    z-index: 10;
+    /* Ensure icon is above input background but not interactive */
     pointer-events: none;
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0.8;
 }
 
 .input-wrapper input {
-    width: 100%;
-    padding: 16px 50px 16px 50px;
-    /* Standardized padding */
-    padding-left: 54px;
-    /* Explicit space for left icon */
+    width: 100% !important;
+    padding: 16px 50px 16px 64px !important;
+    /* Extremely clear space for the icon */
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     font-size: 1rem;
@@ -222,6 +220,7 @@
     font-weight: 500;
     color: #1e293b;
     line-height: 1.5;
+    box-sizing: border-box;
 }
 
 .input-wrapper input::placeholder {
@@ -522,5 +521,156 @@
 
     .auth-logo img {
         height: 100px;
+    }
+}
+
+/* Social Authentication Modal Styles */
+.social-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+}
+
+.social-modal {
+    background: #ffffff;
+    width: 100%;
+    max-width: 440px;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-modal-header {
+    padding: 32px 32px 20px;
+    text-align: center;
+}
+
+.provider-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.provider-logo.google {
+    background: #ffffff;
+    color: #ea4335;
+    border: 1px solid #f1f5f9;
+}
+
+.provider-logo.facebook {
+    background: #1877f2;
+    color: #ffffff;
+}
+
+.social-modal h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.social-modal-body {
+    padding: 0 32px 32px;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    margin-bottom: 24px;
+}
+
+.account-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+
+.account-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.account-info {
+    flex: 1;
+}
+
+.account-name {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.account-email {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 2px 0 0;
+}
+
+.social-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e2e8f0;
+    border-top-color: #8b5cf6;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.social-modal-footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 }

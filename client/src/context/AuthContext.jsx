@@ -76,6 +76,26 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const socialLogin = async (socialData) => {
+        try {
+            const response = await authAPI.socialLogin(socialData);
+            const { data } = response.data;
+
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data));
+
+            setUser(data);
+            setIsAuthenticated(true);
+
+            return { success: true };
+        } catch (error) {
+            return {
+                success: false,
+                message: error.response?.data?.message || 'Social login failed'
+            };
+        }
+    };
+
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -89,6 +109,7 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated,
         login,
         register,
+        socialLogin,
         logout
     };
 
