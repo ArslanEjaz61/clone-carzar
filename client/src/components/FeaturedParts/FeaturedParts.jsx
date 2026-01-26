@@ -101,7 +101,7 @@ const FeaturedParts = () => {
                     <div>
                         <h2 className="section-title">
                             <FaCog className="section-icon" />
-                            Featured Auto Parts
+                            Auto Products
                         </h2>
                         <p className="section-subtitle">Quality parts for all car makes and models</p>
                     </div>

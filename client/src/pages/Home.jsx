@@ -10,7 +10,7 @@ const Home = () => {
         <main className="home-page">
             <Hero />
 
-            {/* Featured Auto Parts - Actual Parts Slider */}
+            {/* Auto Products Slider */}
             <FeaturedParts />
 
             <BrowseSection />
