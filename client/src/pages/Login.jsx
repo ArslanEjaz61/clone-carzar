@@ -16,6 +16,7 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [socialLoading, setSocialLoading] = useState(false);
+    const [socialStep, setSocialStep] = useState('loading'); // 'loading', 'picker', 'verifying'
     const [activeProvider, setActiveProvider] = useState(null);
     const [error, setError] = useState('');
 
@@ -37,16 +38,25 @@ const Login = () => {
         setActiveProvider(provider);
         setSocialLoading(true);
         setError('');
+        setSocialStep('loading'); // New state for steps
 
-        // Simulating the realistic delay of account verification
+        // Step 1: Loading
+        setTimeout(() => {
+            setSocialStep('picker'); // Show account picker
+        }, 800);
+    };
+
+    const confirmSocialLogin = async () => {
+        setSocialStep('verifying');
+
         setTimeout(async () => {
             try {
                 const socialData = {
-                    provider,
-                    email: provider === 'Google' ? 'yasir.malik@gmail.com' : 'yasir.malik.fb@facebook.com',
+                    provider: activeProvider,
+                    email: activeProvider === 'Google' ? 'yasir.malik@gmail.com' : 'yasir.malik.fb@facebook.com',
                     name: `Yasir Malik`,
                     providerId: `social_${Math.random().toString(36).substr(2, 9)}`,
-                    avatar: provider === 'Google'
+                    avatar: activeProvider === 'Google'
                         ? 'https://api.dicebear.com/7.x/avataaars/svg?seed=Yasir'
                         : 'https://api.dicebear.com/7.x/pixel-art/svg?seed=Yasir'
                 };
@@ -56,7 +66,7 @@ const Login = () => {
                 if (result.success) {
                     navigate('/');
                 } else {
-                    // Fallback to demo login if backend is being strict
+                    // Robust fallback
                     localStorage.setItem('token', 'social_demo_token');
                     localStorage.setItem('user', JSON.stringify({
                         _id: 'social_demo_id',
@@ -68,13 +78,13 @@ const Login = () => {
                     window.location.href = '/';
                 }
             } catch (err) {
-                // Last resort fallback
                 handleDemoLogin();
             } finally {
                 setSocialLoading(false);
                 setActiveProvider(null);
+                setSocialStep('loading');
             }
-        }, 1800);
+        }, 1500);
     };
 
     const handleSubmit = async (e) => {
@@ -115,7 +125,7 @@ const Login = () => {
                 <div className="auth-branding">
                     <div className="auth-branding-content">
                         <Link to="/" className="auth-logo">
-                            <img src="/logo-white.png" alt="CarZar" />
+                            <img src="/logoooo.png" alt="CarZar" />
                         </Link>
                         <h1>Welcome Back!</h1>
                         <p>Sign in to access your account, manage your listings, and find your perfect vehicle.</p>
@@ -242,25 +252,48 @@ const Login = () => {
                             <div className={`provider-logo ${activeProvider?.toLowerCase()}`}>
                                 {activeProvider === 'Google' ? <FaGoogle /> : <FaFacebookF />}
                             </div>
-                            <h3>Connecting to {activeProvider}...</h3>
+                            <h3>
+                                {socialStep === 'picker' ? `Sign in with ${activeProvider}` :
+                                    socialStep === 'verifying' ? 'Verifying...' : `Connecting...`}
+                            </h3>
                         </div>
                         <div className="social-modal-body">
-                            <div className="account-item">
-                                <div className="account-avatar">
-                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Yasir" alt="User" />
+                            {socialStep === 'picker' ? (
+                                <div className="account-picker-list">
+                                    <button className="account-item interactive" onClick={confirmSocialLogin}>
+                                        <div className="account-avatar">
+                                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Yasir" alt="User" />
+                                        </div>
+                                        <div className="account-info">
+                                            <p className="account-name">Yasir Malik</p>
+                                            <p className="account-email">
+                                                {activeProvider === 'Google' ? 'yasir.malik@gmail.com' : 'yasir.malik.fb@facebook.com'}
+                                            </p>
+                                        </div>
+                                        <div className="account-chevron">→</div>
+                                    </button>
+                                    <button className="use-another-account" onClick={() => setSocialLoading(false)}>
+                                        Use another account
+                                    </button>
                                 </div>
-                                <div className="account-info">
-                                    <p className="account-name">Yasir Malik</p>
-                                    <p className="account-email">
-                                        {activeProvider === 'Google' ? 'yasir.malik@gmail.com' : 'yasir.malik.fb@facebook.com'}
-                                    </p>
+                            ) : (
+                                <div className="account-item">
+                                    <div className="account-avatar pulse">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Yasir" alt="User" />
+                                    </div>
+                                    <div className="account-info">
+                                        <p className="account-name">Yasir Malik</p>
+                                        <p className="account-email">
+                                            {activeProvider === 'Google' ? 'yasir.malik@gmail.com' : 'yasir.malik.fb@facebook.com'}
+                                        </p>
+                                    </div>
+                                    <div className="account-status">
+                                        <div className="social-spinner"></div>
+                                    </div>
                                 </div>
-                                <div className="account-status">
-                                    <div className="social-spinner"></div>
-                                </div>
-                            </div>
+                            )}
                             <p className="social-modal-footer">
-                                Verifying your identity with {activeProvider} Secure Auth
+                                {socialStep === 'picker' ? 'Select an account to continue' : 'Secure Authentication in progress'}
                             </p>
                         </div>
                     </div>

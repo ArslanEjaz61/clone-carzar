@@ -81,8 +81,13 @@
 /* Main Navigation */
 .header-main {
     background-color: var(--white);
-    padding: 8px 0;
+    padding: 2px 0;
+    /* Reduced padding for compact look */
     border-bottom: 1px solid var(--gray-200);
+    height: 80px;
+    /* Fixed height for navbar consistency */
+    display: flex;
+    align-items: center;
 }
 
 .header-main-inner {
@@ -102,10 +107,13 @@
 }
 
 .logo-image {
-    height: 150px;
+    height: 450px;
     width: auto;
     object-fit: contain;
-    margin: -40px 0;
+    margin: -160px 0;
+    /* More aggressive negative margin to pull logo into the flow */
+    position: relative;
+    z-index: 100;
 }
 
 .logo-icon {
@@ -366,7 +374,8 @@
 }
 
 .mobile-menu-header .logo .logo-image {
-    height: 60px;
+    height: 180px;
+    /* 3x increase from 60px */
     width: auto;
     object-fit: contain;
 }
@@ -533,8 +542,8 @@ body.mobile-menu-open {
     }
 
     .logo-image {
-        height: 100px;
-        margin: -25px 0;
+        height: 300px;
+        margin: -110px 0;
     }
 
     .post-ad-btn {
@@ -559,8 +568,8 @@ body.mobile-menu-open {
     }
 
     .logo-image {
-        height: 90px;
-        margin: -22px 0;
+        height: 270px;
+        margin: -100px 0;
     }
 
     .mobile-menu-toggle {
@@ -580,8 +589,8 @@ body.mobile-menu-open {
 /* Extra small phones */
 @media (max-width: 375px) {
     .logo-image {
-        height: 80px;
-        margin: -20px 0;
+        height: 240px;
+        margin: -90px 0;
     }
 
     .mobile-menu-toggle {

@@ -163,7 +163,7 @@ const Header = () => {
         {/* Menu Header */}
         <div className="mobile-menu-header">
           <Link to="/" className="logo" onClick={() => setMobileMenuOpen(false)}>
-            <img src="/carzar-white-logo.png" alt="CarZar" className="logo-image" />
+            <img src="/logoooo.png" alt="CarZar" className="logo-image" />
           </Link>
           <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
             <FaTimes />

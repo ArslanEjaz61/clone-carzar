@@ -63,25 +63,37 @@
     position: relative;
     z-index: 1;
     color: #ffffff;
-    max-width: 400px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center everything */
+    text-align: center;
 }
 
 .auth-logo {
     display: flex;
     align-items: center;
-    margin-bottom: 32px;
+    margin-bottom: 0px;
+    /* Removed margin to keep it compact */
+    justify-content: center;
 }
 
 .auth-logo img {
-    height: 160px;
+    height: 480px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+    margin-top: -160px;
+    margin-bottom: -140px;
+    /* Pull text almost to the logo's edge */
 }
 
 .auth-branding-content h1 {
     font-size: 2.5rem;
     font-weight: 800;
+    margin-top: 0;
+    /* Remove top margin */
     margin-bottom: 16px;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
@@ -96,7 +108,9 @@
 .auth-features {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .auth-feature {
@@ -210,8 +224,8 @@
 
 .input-wrapper input {
     width: 100% !important;
-    padding: 16px 50px 16px 64px !important;
-    /* Extremely clear space for the icon */
+    padding: 16px 50px 16px 72px !important;
+    /* Increased padding to 72px for maximum clarity */
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     font-size: 1rem;
@@ -221,6 +235,64 @@
     color: #1e293b;
     line-height: 1.5;
     box-sizing: border-box;
+}
+
+.account-item.interactive {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: left;
+}
+
+.account-item.interactive:hover {
+    background: #f1f5f9;
+    border-color: #8b5cf6;
+    transform: translateY(-2px);
+}
+
+.account-chevron {
+    color: #94a3b8;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.use-another-account {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: #8b5cf6;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 12px;
+    margin-top: -12px;
+    margin-bottom: 24px;
+    transition: background 0.2s ease;
+}
+
+.use-another-account:hover {
+    background: #f5f3ff;
+}
+
+.account-avatar.pulse {
+    animation: avatarPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes avatarPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+    }
 }
 
 .input-wrapper input::placeholder {
@@ -520,7 +592,11 @@
     }
 
     .auth-logo img {
-        height: 100px;
+        height: 300px;
+        margin-top: -110px;
+        /* Max pull-up mobile */
+        margin-bottom: -90px;
+        /* Text is now touching the logo bottom */
     }
 }
 
