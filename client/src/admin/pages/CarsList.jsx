@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { adminAPI, carsAPI } from '../../services/api';
+import { adminAPI, carsAPI, BASE_URL } from '../../services/api';
 import { FaPlus, FaEdit, FaTrash, FaStar, FaEye, FaEyeSlash, FaCar } from 'react-icons/fa';
 import './CarsList.css';
 
@@ -136,7 +136,7 @@ const CarsList = () => {
                                     <td className="car-info">
                                         <div className="car-image">
                                             <img
-                                                src={car.images?.[0]?.url || 'https://via.placeholder.com/80x60?text=Car'}
+                                                src={car.images?.[0]?.url ? `${BASE_URL}${car.images[0].url}` : 'https://via.placeholder.com/80x60?text=Car'}
                                                 alt={car.title}
                                             />
                                         </div>

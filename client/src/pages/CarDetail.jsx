@@ -18,7 +18,7 @@ import {
     FaClock,
     FaShieldAlt
 } from 'react-icons/fa';
-import { carsAPI } from '../services/api';
+import { carsAPI, BASE_URL } from '../services/api';
 import './CarDetail.css';
 
 // Sample car data for when backend is not available
@@ -164,10 +164,16 @@ const CarDetail = () => {
         );
     }
 
-    const images = car.images || [car.image] || [sampleCar.images[0]];
-    const currentImage = typeof images[currentImageIndex] === 'string'
-        ? images[currentImageIndex]
-        : images[currentImageIndex]?.url || sampleCar.images[0];
+    const images = (car.images && car.images.length > 0) ? car.images : (car.image ? [car.image] : [sampleCar.images[0]]);
+    const getImageUrl = (img) => {
+        const url = typeof img === 'string' ? img : img?.url;
+        if (url && url.startsWith('/uploads/')) {
+            return `${BASE_URL}${url}`;
+        }
+        return url || sampleCar.images[0];
+    };
+
+    const currentImage = getImageUrl(images[currentImageIndex]);
 
     return (
         <main className="car-detail-page">
@@ -208,7 +214,7 @@ const CarDetail = () => {
                             {images.length > 1 && (
                                 <div className="gallery-thumbs">
                                     {images.map((img, index) => {
-                                        const thumbUrl = typeof img === 'string' ? img : img?.url;
+                                        const thumbUrl = getImageUrl(img);
                                         return (
                                             <button
                                                 key={index}

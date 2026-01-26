@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { FaChevronLeft, FaChevronRight, FaArrowRight, FaCog, FaMapMarkerAlt } from 'react-icons/fa';
-import { partsAPI } from '../../services/api';
+import { partsAPI, BASE_URL } from '../../services/api';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './FeaturedParts.css';
@@ -31,7 +31,7 @@ const formatPrice = (price) => {
 const getImageUrl = (url) => {
     if (!url) return 'https://via.placeholder.com/300x200?text=No+Image';
     if (url.startsWith('http')) return url;
-    return `http://localhost:5000${url}`;
+    return `${BASE_URL}${url}`;
 };
 
 const FeaturedParts = () => {

@@ -16,7 +16,7 @@ import {
     FaTag,
     FaCheck
 } from 'react-icons/fa';
-import { partsAPI } from '../services/api';
+import { partsAPI, BASE_URL } from '../services/api';
 import { useCart } from '../context/CartContext';
 import './PartDetail.css';
 
@@ -80,7 +80,13 @@ const PartDetail = () => {
         if (!part?.images || part.images.length === 0) {
             return ['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800'];
         }
-        return part.images.map(img => typeof img === 'string' ? img : img?.url);
+        return part.images.map(img => {
+            const url = typeof img === 'string' ? img : img?.url;
+            if (url && url.startsWith('/uploads/')) {
+                return `${BASE_URL}${url}`;
+            }
+            return url;
+        });
     };
 
     const handleShare = () => {
