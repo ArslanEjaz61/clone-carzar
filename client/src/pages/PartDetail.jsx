@@ -16,7 +16,7 @@ import {
     FaTag,
     FaCheck
 } from 'react-icons/fa';
-import { partsAPI, BASE_URL } from '../services/api';
+import { partsAPI, BASE_URL, getImageUrl as buildImageUrl } from '../services/api';
 import { useCart } from '../context/CartContext';
 import './PartDetail.css';
 
@@ -82,10 +82,7 @@ const PartDetail = () => {
         }
         return part.images.map(img => {
             const url = typeof img === 'string' ? img : img?.url;
-            if (url && url.startsWith('/uploads/')) {
-                return `${BASE_URL}${url}`;
-            }
-            return url;
+            return buildImageUrl(url);
         });
     };
 

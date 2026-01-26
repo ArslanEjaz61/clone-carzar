@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHeart, FaRegHeart, FaGasPump, FaCog, FaMapMarkerAlt, FaTachometerAlt, FaCamera, FaWhatsapp, FaPhone } from 'react-icons/fa';
-import { BASE_URL } from '../../services/api';
+import { BASE_URL, getImageUrl as buildImageUrl } from '../../services/api';
 import './CarCard.css';
 
 const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=400';
@@ -44,12 +44,9 @@ const CarCard = ({ car, featured = false, onFavoriteToggle }) => {
 
         if (!url) return FALLBACK_IMAGE;
 
-        // If it's a local upload path, prepend API URL
-        if (url.startsWith('/uploads/')) {
-            return `${BASE_URL}${url}`;
-        }
-
-        return url;
+        // Use the centralized helper
+        const builtUrl = buildImageUrl(typeof url === 'string' ? url : url?.url);
+        return builtUrl || FALLBACK_IMAGE;
     };
 
     const handleImageError = () => {

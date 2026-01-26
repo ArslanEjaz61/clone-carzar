@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { adminAPI, partsAPI, BASE_URL } from '../../services/api';
+import { adminAPI, partsAPI, BASE_URL, getImageUrl } from '../../services/api';
 import { FaPlus, FaEdit, FaTrash, FaCogs } from 'react-icons/fa';
 import './CarsList.css'; // Reuse same styles
 
@@ -40,11 +40,7 @@ const PartsList = () => {
         }
     };
 
-    const getImageUrl = (url) => {
-        if (!url) return 'https://via.placeholder.com/80x60?text=Part';
-        if (url.startsWith('http')) return url;
-        return `${BASE_URL}${url}`;
-    };
+
 
     return (
         <div className="cars-list-page">

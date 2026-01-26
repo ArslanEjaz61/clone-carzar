@@ -18,7 +18,7 @@ import {
     FaExclamationCircle
 } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
-import { ordersAPI, BASE_URL } from '../services/api';
+import { ordersAPI, BASE_URL, getImageUrl as buildImageUrl } from '../services/api';
 import './Checkout.css';
 
 const Checkout = () => {
@@ -213,10 +213,7 @@ Powered by CarZar`;
         if (item.images && item.images.length > 0) {
             const img = item.images[0];
             const url = typeof img === 'string' ? img : img?.url;
-            if (url && url.startsWith('/uploads/')) {
-                return `${BASE_URL}${url}`;
-            }
-            return url;
+            return buildImageUrl(url);
         }
         return 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400';
     };

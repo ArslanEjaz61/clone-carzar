@@ -3,11 +3,31 @@ import axios from 'axios';
 // Base API URL
 // Fallback to production URL if hostname matches, otherwise localhost
 const API_URL = import.meta.env.VITE_API_URL ||
-    (typeof window !== 'undefined' && window.location.hostname === 'carzarpk.store'
+    (typeof window !== 'undefined' && (window.location.hostname === 'carzarpk.store' || window.location.hostname === 'www.carzarpk.store')
         ? 'https://carzarpk.store/api'
         : 'http://localhost:5000/api');
 
 export const BASE_URL = API_URL.replace('/api', '');
+
+/**
+ * Robust image URL builder
+ * Handles absolute URLs, relative paths in production, and dev fallback.
+ */
+export const getImageUrl = (url) => {
+    if (!url) return 'https://via.placeholder.com/300x200?text=No+Image';
+    if (typeof url !== 'string') return 'https://via.placeholder.com/300x200?text=Invalid+Image';
+    if (url.startsWith('http')) return url;
+
+    const cleanUrl = url.startsWith('/') ? url : `/${url}`;
+
+    // In production on the same domain, use relative paths for efficiency and reliability
+    if (typeof window !== 'undefined' && (window.location.hostname === 'carzarpk.store' || window.location.hostname === 'www.carzarpk.store')) {
+        return cleanUrl;
+    }
+
+    // Fallback to absolute URL for local development
+    return `${BASE_URL}${cleanUrl}`;
+};
 
 // Create axios instance
 const api = axios.create({

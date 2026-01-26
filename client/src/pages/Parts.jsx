@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { partsAPI, BASE_URL } from '../services/api';
+import { partsAPI, BASE_URL, getImageUrl } from '../services/api';
 import { useCart } from '../context/CartContext';
 import { FaCogs, FaFilter, FaTimes, FaShoppingCart, FaBolt } from 'react-icons/fa';
 import './Parts.css';
@@ -26,11 +26,7 @@ const Parts = () => {
     ];
     const cities = ['Lahore', 'Karachi', 'Islamabad', 'Rawalpindi', 'Faisalabad', 'Multan'];
 
-    const getImageUrl = (url) => {
-        if (!url) return 'https://via.placeholder.com/300x200?text=No+Image';
-        if (url.startsWith('http')) return url;
-        return `${BASE_URL}${url}`;
-    };
+
 
     useEffect(() => {
         fetchParts();
