@@ -64,6 +64,14 @@ const Signup = () => {
         setLoading(false);
     };
 
+    // Demo social login
+    const handleSocialLogin = (provider) => {
+        setError(`${provider} signup is coming soon! Using demo mode instead.`);
+        setTimeout(() => {
+            handleDemoSignup();
+        }, 1500);
+    };
+
     // Demo signup for testing without backend
     const handleDemoSignup = () => {
         localStorage.setItem('token', 'demo_token_123');
@@ -235,11 +243,19 @@ const Signup = () => {
                         </div>
 
                         <div className="social-auth">
-                            <button className="social-btn google">
+                            <button
+                                type="button"
+                                className="social-btn google"
+                                onClick={() => handleSocialLogin('Google')}
+                            >
                                 <FaGoogle />
                                 <span>Google</span>
                             </button>
-                            <button className="social-btn facebook">
+                            <button
+                                type="button"
+                                className="social-btn facebook"
+                                onClick={() => handleSocialLogin('Facebook')}
+                            >
                                 <FaFacebookF />
                                 <span>Facebook</span>
                             </button>

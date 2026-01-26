@@ -194,17 +194,26 @@
 
 .input-icon {
     position: absolute;
-    left: 20px;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Precise vertical centering */
     color: #8b5cf6;
     font-size: 18px;
-    transition: all 0.3s ease;
-    z-index: 1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
     pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-wrapper input {
     width: 100%;
-    padding: 16px 50px 16px 56px;
+    padding: 16px 50px 16px 50px;
+    /* Standardized padding */
+    padding-left: 54px;
+    /* Explicit space for left icon */
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     font-size: 1rem;
@@ -212,6 +221,7 @@
     background: #ffffff;
     font-weight: 500;
     color: #1e293b;
+    line-height: 1.5;
 }
 
 .input-wrapper input::placeholder {
@@ -239,21 +249,26 @@
 
 .password-toggle {
     position: absolute;
-    right: 20px;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
     background: transparent;
     border: none;
-    color: #8b5cf6;
+    color: #64748b;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px;
     padding: 8px;
-    transition: all 0.3s ease;
-    z-index: 1;
+    transition: all 0.2s ease;
+    z-index: 2;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .password-toggle:hover {
-    color: #7c3aed;
-    background: rgba(139, 92, 246, 0.08);
+    color: #8b5cf6;
+    background: rgba(139, 92, 246, 0.1);
 }
 
 .form-row {
