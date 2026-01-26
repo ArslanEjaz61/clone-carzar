@@ -80,12 +80,12 @@
 }
 
 .auth-logo img {
-    height: 480px;
+    height: 320px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
-    margin-top: -160px;
-    margin-bottom: -140px;
+    margin-top: -80px;
+    margin-bottom: -60px;
     /* Pull text almost to the logo's edge */
 }
 
@@ -592,11 +592,9 @@
     }
 
     .auth-logo img {
-        height: 300px;
-        margin-top: -110px;
-        /* Max pull-up mobile */
-        margin-bottom: -90px;
-        /* Text is now touching the logo bottom */
+        height: 240px;
+        margin-top: -60px;
+        margin-bottom: -40px;
     }
 }
 

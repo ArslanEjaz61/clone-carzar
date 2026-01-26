@@ -107,12 +107,10 @@
 }
 
 .logo-image {
-    height: 160px;
-    /* Increased from 100px for better visibility */
+    height: 150px;
     width: auto;
     object-fit: contain;
-    margin: -35px 0;
-    /* Adjusted margin for 160px height */
+    margin: -30px 0;
     position: relative;
     z-index: 100;
 }
@@ -543,8 +541,8 @@ body.mobile-menu-open {
     }
 
     .logo-image {
-        height: 140px;
-        margin: -30px 0;
+        height: 120px;
+        margin: -25px 0;
     }
 
     .post-ad-btn {
@@ -569,8 +567,8 @@ body.mobile-menu-open {
     }
 
     .logo-image {
-        height: 120px;
-        margin: -25px 0;
+        height: 100px;
+        margin: -20px 0;
     }
 
     .mobile-menu-toggle {
@@ -590,8 +588,8 @@ body.mobile-menu-open {
 /* Extra small phones */
 @media (max-width: 375px) {
     .logo-image {
-        height: 60px;
-        margin: -5px 0;
+        height: 80px;
+        margin: -10px 0;
     }
 
     .mobile-menu-toggle {

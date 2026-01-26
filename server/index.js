@@ -95,13 +95,8 @@ const startServer = async () => {
         });
     } catch (error) {
         console.error('❌ MongoDB connection failed:', error.message);
-        console.log('⚠️ Starting server without database...');
-
-        // Start server without database for development
-        app.listen(PORT, () => {
-            console.log(`🚀 CarZar API Server running on port ${PORT} (No DB)`);
-            console.log(`📍 http://localhost:${PORT}`);
-        });
+        console.error('CRITICAL: The server requires a database connection to function correctly.');
+        process.exit(1); // Exit with error if DB connection fails
     }
 };
 

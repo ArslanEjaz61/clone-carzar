@@ -569,6 +569,11 @@
         height: 250px;
     }
 
+    .gallery-main img {
+        object-fit: contain;
+        background-color: #000;
+    }
+
     .gallery-thumb {
         width: 60px;
         height: 45px;

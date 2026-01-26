@@ -471,7 +471,12 @@
     }
 
     .gallery-main {
-        height: 350px;
+        height: 250px;
+    }
+
+    .gallery-main img {
+        object-fit: contain;
+        background-color: #000;
     }
 }
 
@@ -500,5 +505,10 @@
 
     .gallery-main {
         height: 280px;
+    }
+
+    .gallery-main img {
+        object-fit: contain;
+        background-color: var(--gray-900);
     }
 }

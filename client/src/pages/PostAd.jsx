@@ -143,11 +143,8 @@ const PostAd = () => {
             await carsAPI.create(carData);
             setStep(4); // Success step
         } catch (error) {
-            console.log('Backend not available - simulating success');
-            // Simulate success for demo
-            setTimeout(() => {
-                setStep(4);
-            }, 1000);
+            console.error('Post Ad error:', error);
+            setError(error.response?.data?.message || 'Failed to post ad. Please ensure the server is running and try again.');
         }
 
         setLoading(false);
