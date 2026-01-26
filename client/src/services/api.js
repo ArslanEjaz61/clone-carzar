@@ -1,7 +1,12 @@
 import axios from 'axios';
 
 // Base API URL
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Fallback to production URL if hostname matches, otherwise localhost
+const API_URL = import.meta.env.VITE_API_URL ||
+    (typeof window !== 'undefined' && window.location.hostname === 'carzarpk.store'
+        ? 'https://carzarpk.store/api'
+        : 'http://localhost:5000/api');
+
 export const BASE_URL = API_URL.replace('/api', '');
 
 // Create axios instance
