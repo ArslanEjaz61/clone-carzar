@@ -40,6 +40,13 @@ const AdminLayout = () => {
         }
     }, [isAuthenticated, user, navigate, loading]);
 
+    // Close sidebar on mobile when location changes
+    useEffect(() => {
+        if (window.innerWidth <= 992) {
+            setSidebarOpen(false);
+        }
+    }, [location]);
+
     // Show loading spinner while checking auth
     if (loading) {
         return (
@@ -63,13 +70,6 @@ const AdminLayout = () => {
             </div>
         );
     }
-
-    // Close sidebar on mobile when location changes
-    useEffect(() => {
-        if (window.innerWidth <= 992) {
-            setSidebarOpen(false);
-        }
-    }, [location]);
 
     const handleLogout = () => {
         logout();
