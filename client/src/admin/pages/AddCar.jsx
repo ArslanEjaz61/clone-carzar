@@ -174,7 +174,24 @@ const AddCar = () => {
         } catch (err) {
             console.error('Add car error:', err);
             console.error('Error response:', err.response?.data);
-            const errorMsg = err.response?.data?.message || err.response?.data?.error || err.message || 'Failed to add car';
+
+            // Get detailed error message
+            let errorMsg = 'Failed to add car.';
+
+            if (err.response) {
+                if (err.response.status === 401) {
+                    errorMsg = 'Session expired! Please logout and login again.';
+                } else if (err.response.status === 403) {
+                    errorMsg = 'Access denied. Admin privileges required.';
+                } else {
+                    errorMsg = err.response.data?.message || err.response.data?.error || `Server error: ${err.response.status}`;
+                }
+            } else if (err.request) {
+                errorMsg = 'No response from server. Please check your internet connection.';
+            } else {
+                errorMsg = err.message || 'Unknown error occurred.';
+            }
+
             setError(errorMsg);
         }
         setLoading(false);

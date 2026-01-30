@@ -111,7 +111,28 @@ const AddPart = () => {
             }, 2000);
         } catch (err) {
             console.error('Add part error:', err);
-            const errorMsg = err.response?.data?.message || err.response?.data?.error || 'Failed to add part. Please check your connection and required fields.';
+            console.error('Full error response:', err.response);
+
+            // Get detailed error message
+            let errorMsg = 'Failed to add part.';
+
+            if (err.response) {
+                // Server responded with an error
+                if (err.response.status === 401) {
+                    errorMsg = 'Session expired! Please logout and login again.';
+                } else if (err.response.status === 403) {
+                    errorMsg = 'Access denied. Admin privileges required.';
+                } else {
+                    errorMsg = err.response.data?.message || err.response.data?.error || `Server error: ${err.response.status}`;
+                }
+            } else if (err.request) {
+                // No response received
+                errorMsg = 'No response from server. Please check your internet connection.';
+            } else {
+                // Request setup error
+                errorMsg = err.message || 'Unknown error occurred.';
+            }
+
             setError(errorMsg);
         }
         setLoading(false);
