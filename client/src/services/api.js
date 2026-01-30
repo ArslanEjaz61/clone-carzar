@@ -187,6 +187,11 @@ export const partsAPI = {
     // Update part
     update: (id, partData) => api.put(`/parts/${id}`, partData),
 
+    // Update with images
+    updateWithImages: (id, formData) => api.put(`/parts/${id}`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+    }),
+
     // Delete part
     delete: (id) => api.delete(`/parts/${id}`)
 };

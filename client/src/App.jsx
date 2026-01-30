@@ -31,6 +31,8 @@ import PartsList from './admin/pages/PartsList';
 import AddPart from './admin/pages/AddPart';
 import UsersList from './admin/pages/UsersList';
 import OrdersList from './admin/pages/OrdersList';
+import EditCar from './admin/pages/EditCar';
+import EditPart from './admin/pages/EditPart';
 
 import './index.css';
 import './styles/responsive.css';
@@ -99,8 +101,10 @@ function App() {
                 <Route index element={<Dashboard />} />
                 <Route path="cars" element={<CarsList />} />
                 <Route path="add-car" element={<AddCar />} />
+                <Route path="edit-car/:id" element={<EditCar />} />
                 <Route path="parts" element={<PartsList />} />
                 <Route path="add-part" element={<AddPart />} />
+                <Route path="edit-part/:id" element={<EditPart />} />
                 <Route path="users" element={<UsersList />} />
                 <Route path="orders" element={<OrdersList />} />
               </Route>
