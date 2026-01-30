@@ -84,11 +84,11 @@ const FeaturedParts = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 1,
                     slidesToScroll: 1,
                     arrows: true,
-                    centerMode: false,
-                    variableWidth: false
+                    centerMode: true,
+                    centerPadding: '20px'
                 }
             }
         ]
