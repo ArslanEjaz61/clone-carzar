@@ -218,38 +218,39 @@
 
 @media (max-width: 576px) {
     .featured-parts-section {
-        padding: 30px 0;
+        padding: 25px 0;
     }
 
     .featured-parts-section .section-title {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
     }
 
     .parts-slider {
-        padding: 0 10px;
+        padding: 0 28px;
     }
 
     .parts-slide-item {
-        padding: 0 8px;
+        padding: 0 4px;
     }
 
-    /* FULL WIDTH VERTICAL CARD FOR MOBILE */
+    /* COMPACT CARDS FOR 2 PER ROW */
     .part-card-new {
         display: flex;
         flex-direction: column;
-        height: auto;
+        height: 100%;
         width: 100% !important;
-        min-width: 280px;
-        border-radius: 12px;
+        border-radius: 10px;
         overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        background: #fff;
     }
 
     .part-card-image {
         position: relative;
         width: 100%;
-        height: 160px;
-        border-radius: 12px 12px 0 0;
+        height: 100px;
+        border-radius: 10px 10px 0 0;
+        overflow: hidden;
     }
 
     .part-card-image img {
@@ -260,12 +261,12 @@
     }
 
     .part-card-content {
-        padding: 14px 16px;
+        padding: 8px 10px 10px;
         display: block;
     }
 
     .part-card-title {
-        font-size: 1rem;
+        font-size: 0.75rem;
         font-weight: 600;
         color: #1E293B;
         -webkit-line-clamp: 2;
@@ -273,53 +274,58 @@
         -webkit-box-orient: vertical;
         display: -webkit-box;
         overflow: hidden;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
+        line-height: 1.3;
     }
 
     .part-card-category {
-        font-size: 0.8rem;
-        margin-bottom: 6px;
+        font-size: 0.65rem;
+        margin-bottom: 3px;
         color: #8B5CF6;
         font-weight: 500;
     }
 
     .part-card-location {
-        font-size: 0.8rem;
-        margin-bottom: 8px;
+        font-size: 0.6rem;
+        margin-bottom: 5px;
         color: #64748B;
         display: flex;
         align-items: center;
-        gap: 4px;
+        gap: 3px;
+    }
+
+    .part-card-location svg {
+        font-size: 8px;
     }
 
     .part-card-price {
-        font-size: 1.15rem;
+        font-size: 0.8rem;
         font-weight: 700;
         color: #8B5CF6;
     }
 
     .part-condition {
-        top: 10px;
-        left: 10px;
-        padding: 4px 10px;
-        font-size: 0.7rem;
+        top: 6px;
+        left: 6px;
+        padding: 2px 6px;
+        font-size: 0.55rem;
     }
 
     .parts-slider-arrow {
-        width: 32px;
-        height: 32px;
-        font-size: 12px;
+        width: 26px;
+        height: 26px;
+        font-size: 10px;
     }
 
     .parts-slider-prev {
-        left: -5px;
+        left: 0;
     }
 
     .parts-slider-next {
-        right: -5px;
+        right: 0;
     }
 
-    /* Slick slider fixes for mobile - show 1 card at a time */
+    /* Slick slider fixes for 2 cards */
     .parts-slider .slick-track {
         display: flex !important;
         align-items: stretch;
@@ -333,41 +339,48 @@
     .parts-slider .slick-slide>div {
         height: 100%;
         width: 100%;
+        padding: 0;
     }
 
     .parts-slider .slick-list {
         overflow: hidden !important;
-        margin: 0 -8px;
+        margin: 0;
     }
 }
 
 /* Extra small phones */
 @media (max-width: 400px) {
     .parts-slider {
-        padding: 0 8px;
+        padding: 0 24px;
     }
 
     .parts-slide-item {
-        padding: 0 6px;
-    }
-
-    .part-card-new {
-        min-width: 240px;
+        padding: 0 3px;
     }
 
     .part-card-image {
-        height: 140px;
+        height: 85px;
+    }
+
+    .part-card-content {
+        padding: 6px 8px 8px;
     }
 
     .part-card-title {
-        font-size: 0.95rem;
+        font-size: 0.7rem;
     }
 
     .part-card-category {
-        font-size: 0.75rem;
+        font-size: 0.6rem;
     }
 
     .part-card-price {
-        font-size: 1.05rem;
+        font-size: 0.75rem;
+    }
+
+    .parts-slider-arrow {
+        width: 22px;
+        height: 22px;
+        font-size: 9px;
     }
 }
