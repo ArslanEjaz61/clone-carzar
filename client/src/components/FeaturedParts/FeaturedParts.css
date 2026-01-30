@@ -227,15 +227,15 @@
 
     .parts-slider {
         padding: 0;
-        margin: 0 -5px;
+        margin: 0 -10px;
     }
 
-    /* Gap between cards */
+    /* Minimal gap between cards for max width */
     .parts-slide-item {
-        padding: 0 6px;
+        padding: 0 4px;
     }
 
-    /* PROFESSIONAL CARDS - 2 PER ROW - WIDER */
+    /* MAXIMUM WIDTH CARDS - 2 PER ROW */
     .part-card-new {
         display: flex;
         flex-direction: column;
@@ -250,7 +250,7 @@
     .part-card-image {
         position: relative;
         width: 100%;
-        height: 110px;
+        height: 130px;
         border-radius: 12px 12px 0 0;
         overflow: hidden;
     }
