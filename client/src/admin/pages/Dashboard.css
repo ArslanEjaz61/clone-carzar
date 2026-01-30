@@ -239,22 +239,55 @@
 @media (max-width: 992px) {
     .quick-actions {
         grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
 
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
 
     .info-cards {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: 576px) {
+    .dashboard-header {
+        margin-bottom: 24px;
+        text-align: center;
+    }
 
     .quick-actions,
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.25rem;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-value {
+        font-size: 1.75rem;
+    }
+
+    .action-card {
+        padding: 16px;
+    }
+
+    .action-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
 }
-

@@ -57,6 +57,13 @@ const AdminLayout = () => {
         );
     }
 
+    // Close sidebar on mobile when location changes
+    useEffect(() => {
+        if (window.innerWidth <= 992) {
+            setSidebarOpen(false);
+        }
+    }, [location]);
+
     const handleLogout = () => {
         logout();
         navigate('/');
@@ -81,6 +88,14 @@ const AdminLayout = () => {
 
     return (
         <div className="admin-layout">
+            {/* Sidebar Overlay */}
+            {sidebarOpen && (
+                <div
+                    className="sidebar-overlay"
+                    onClick={() => setSidebarOpen(false)}
+                ></div>
+            )}
+
             {/* Sidebar */}
             <aside className={`admin-sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
                 <div className="sidebar-header">
