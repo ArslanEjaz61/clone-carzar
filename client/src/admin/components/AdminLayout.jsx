@@ -88,7 +88,7 @@ const AdminLayout = () => {
 
     return (
         <div className="admin-layout">
-            {/* Sidebar Overlay */}
+            {/* Sidebar Overlay - click to close */}
             {sidebarOpen && (
                 <div
                     className="sidebar-overlay"
@@ -96,14 +96,23 @@ const AdminLayout = () => {
                 ></div>
             )}
 
-            {/* Sidebar */}
+            {/* Sidebar - Drawer Style */}
             <aside className={`admin-sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
                 <div className="sidebar-header">
                     <Link to="/" className="admin-logo">
                         <FaCar className="logo-icon" />
                         <span className="logo-text">CarZar</span>
                     </Link>
-                    <span className="admin-badge">Admin</span>
+                    <div className="sidebar-actions">
+                        <span className="admin-badge">Admin</span>
+                        {/* Mobile Only Close Button */}
+                        <button
+                            className="sidebar-close-btn"
+                            onClick={() => setSidebarOpen(false)}
+                        >
+                            <FaTimes />
+                        </button>
+                    </div>
                 </div>
 
                 <nav className="sidebar-nav">
@@ -133,18 +142,22 @@ const AdminLayout = () => {
 
             {/* Main Content */}
             <main className="admin-main">
-                {/* Top Bar */}
+                {/* Top Bar / Header */}
                 <header className="admin-header">
-                    <button
-                        className="menu-toggle"
-                        onClick={() => setSidebarOpen(!sidebarOpen)}
-                    >
-                        {sidebarOpen ? <FaTimes /> : <FaBars />}
-                    </button>
+                    <div className="header-left">
+                        <button
+                            className="menu-toggle"
+                            onClick={() => setSidebarOpen(!sidebarOpen)}
+                            aria-label="Toggle Menu"
+                        >
+                            <FaBars />
+                        </button>
+                        <h2 className="mobile-title">Admin Panel</h2>
+                    </div>
 
                     <div className="header-right">
                         <span className="admin-user">
-                            Welcome, <strong>{user?.name || 'Yasir'}</strong>
+                            <span>Welcome,</span> <strong>{user?.name || 'Yasir'}</strong>
                         </span>
                     </div>
                 </header>
