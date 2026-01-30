@@ -166,7 +166,7 @@ router.post('/', protect, uploadCarImages, async (req, res) => {
         }
 
         if (!partData.contactPhone) {
-            partData.contactPhone = req.user.phone;
+            partData.contactPhone = req.user.phone || '0300-0000000';
         }
 
         // Parse JSON fields
