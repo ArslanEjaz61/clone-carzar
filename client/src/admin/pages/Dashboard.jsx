@@ -75,22 +75,25 @@ const Dashboard = () => {
             <section className="stats-section">
                 <h2>Overview</h2>
                 <div className="stats-grid">
-                    {statCards.map((card, index) => (
-                        <Link
-                            key={index}
-                            to={card.link}
-                            className="stat-card"
-                            style={{ '--card-color': card.color }}
-                        >
-                            <div className="stat-icon">
-                                <card.icon />
-                            </div>
-                            <div className="stat-info">
-                                <span className="stat-value">{card.value}</span>
-                                <span className="stat-label">{card.label}</span>
-                            </div>
-                        </Link>
-                    ))}
+                    {statCards.map((card, index) => {
+                        const Icon = card.icon;
+                        return (
+                            <Link
+                                key={index}
+                                to={card.link}
+                                className="stat-card"
+                                style={{ '--card-color': card.color }}
+                            >
+                                <div className="stat-icon">
+                                    <Icon />
+                                </div>
+                                <div className="stat-info">
+                                    <span className="stat-value">{card.value}</span>
+                                    <span className="stat-label">{card.label}</span>
+                                </div>
+                            </Link>
+                        );
+                    })}
                 </div>
             </section>
 

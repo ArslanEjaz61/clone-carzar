@@ -20,7 +20,14 @@ const AdminLayout = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { user, logout, isAuthenticated, loading } = useAuth();
-    const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 992);
+    const [sidebarOpen, setSidebarOpen] = useState(true);
+
+    // Initial check for mobile
+    useEffect(() => {
+        if (window.innerWidth <= 992) {
+            setSidebarOpen(false);
+        }
+    }, []);
 
     // Check if user is admin - redirect to login if not (only after loading is complete)
     useEffect(() => {
@@ -116,16 +123,19 @@ const AdminLayout = () => {
                 </div>
 
                 <nav className="sidebar-nav">
-                    {menuItems.map((item) => (
-                        <Link
-                            key={item.path}
-                            to={item.path}
-                            className={`nav-link ${isActive(item.path, item.exact) ? 'active' : ''}`}
-                        >
-                            <item.icon className="nav-icon" />
-                            <span className="nav-label">{item.label}</span>
-                        </Link>
-                    ))}
+                    {menuItems.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                            <Link
+                                key={item.path}
+                                to={item.path}
+                                className={`nav-link ${isActive(item.path, item.exact) ? 'active' : ''}`}
+                            >
+                                <Icon className="nav-icon" />
+                                <span className="nav-label">{item.label}</span>
+                            </Link>
+                        );
+                    })}
                 </nav>
 
                 <div className="sidebar-footer">
