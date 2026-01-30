@@ -20,7 +20,7 @@ const AdminLayout = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { user, logout, isAuthenticated, loading } = useAuth();
-    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 992);
 
     // Check if user is admin - redirect to login if not (only after loading is complete)
     useEffect(() => {
