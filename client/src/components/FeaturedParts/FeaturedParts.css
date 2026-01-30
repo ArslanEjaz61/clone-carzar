@@ -218,41 +218,39 @@
 
 @media (max-width: 576px) {
     .featured-parts-section {
-        padding: 40px 0;
+        padding: 30px 0;
     }
 
     .featured-parts-section .section-title {
-        font-size: 1.4rem;
+        font-size: 1.25rem;
     }
 
     .parts-slider {
-        padding: 0 10px;
+        padding: 0 5px;
     }
 
-    /* Add GAP between cards */
+    /* Gap between cards */
     .parts-slide-item {
-        padding: 10px 15px;
+        padding: 0 5px;
     }
 
-    /* PREMIUM LARGE CARDS - 1 PER ROW */
+    /* COMPACT PROFESSIONAL CARDS - 2 PER ROW */
     .part-card-new {
         display: flex;
         flex-direction: column;
-        height: auto;
+        height: 100%;
         width: 100% !important;
-        border-radius: 16px;
+        border-radius: 10px;
         overflow: hidden;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         background: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .part-card-image {
         position: relative;
         width: 100%;
-        height: 200px;
-        /* Big image */
-        border-radius: 16px 16px 0 0;
+        height: 90px;
+        border-radius: 10px 10px 0 0;
         overflow: hidden;
     }
 
@@ -260,20 +258,20 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        background-color: #f8fafc;
+        background-color: #f1f5f9;
     }
 
     .part-card-content {
-        padding: 20px 18px;
+        padding: 10px;
         display: block;
     }
 
     .part-card-title {
-        font-size: 1.1rem;
-        font-weight: 700;
+        font-size: 0.75rem;
+        font-weight: 600;
         color: #1E293B;
-        margin-bottom: 8px;
-        line-height: 1.4;
+        margin-bottom: 4px;
+        line-height: 1.3;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         line-clamp: 2;
@@ -282,85 +280,78 @@
     }
 
     .part-card-category {
-        font-size: 0.9rem;
-        margin-bottom: 6px;
+        font-size: 0.65rem;
+        margin-bottom: 4px;
         color: #8B5CF6;
-        font-weight: 600;
-        display: inline-block;
-        padding: 2px 8px;
-        background: rgba(139, 92, 246, 0.1);
-        border-radius: 4px;
+        font-weight: 500;
     }
 
     .part-card-location {
-        font-size: 0.85rem;
-        margin-bottom: 12px;
+        font-size: 0.6rem;
+        margin-bottom: 6px;
         color: #64748B;
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 3px;
     }
 
     .part-card-location svg {
-        font-size: 14px;
+        font-size: 9px;
         color: #8B5CF6;
     }
 
     .part-card-price {
-        font-size: 1.35rem;
-        font-weight: 800;
+        font-size: 0.85rem;
+        font-weight: 700;
         color: #8B5CF6;
-        margin-top: 5px;
     }
 
     .part-condition {
-        top: 15px;
-        left: 15px;
-        padding: 6px 12px;
-        font-size: 0.75rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        top: 6px;
+        left: 6px;
+        padding: 3px 6px;
+        font-size: 0.55rem;
+        border-radius: 5px;
     }
 
     .parts-slider-arrow {
-        width: 38px;
-        height: 38px;
-        font-size: 14px;
-        background: white;
+        display: none !important;
     }
 
-    /* Position arrows better */
-    .parts-slider-prev {
-        left: -5px;
-    }
-
-    .parts-slider-next {
-        right: -5px;
-    }
-
-    /* Spacing fixes */
+    /* Grid layout fix */
     .parts-slider .slick-list {
-        padding: 15px 0 !important;
-        overflow: visible !important;
+        padding: 5px 0 !important;
+        overflow: hidden !important;
     }
 
     .parts-slider .slick-track {
         display: flex !important;
-        gap: 10px;
+    }
+
+    .parts-slider .slick-slide {
+        height: auto !important;
+    }
+
+    .parts-slider .slick-slide>div {
+        height: 100%;
     }
 }
 
 /* Extra small phones */
 @media (max-width: 400px) {
     .part-card-image {
-        height: 180px;
+        height: 80px;
+    }
+
+    .part-card-content {
+        padding: 8px;
     }
 
     .part-card-title {
-        font-size: 1rem;
+        font-size: 0.7rem;
     }
 
     .part-card-price {
-        font-size: 1.25rem;
+        font-size: 0.8rem;
     }
 }
