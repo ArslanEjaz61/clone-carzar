@@ -144,7 +144,8 @@ const PostAd = () => {
             setStep(4); // Success step
         } catch (error) {
             console.error('Post Ad error:', error);
-            setError(error.response?.data?.message || 'Failed to post ad. Please ensure the server is running and try again.');
+            const errorMsg = error.response?.data?.message || error.response?.data?.error || 'Failed to post ad. Please ensure all required fields are filled and try again.';
+            setError(errorMsg);
         }
 
         setLoading(false);

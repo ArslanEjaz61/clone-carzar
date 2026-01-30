@@ -90,7 +90,7 @@ const AddPart = () => {
             formDataToSend.append('price', formData.price);
             formDataToSend.append('description', formData.description);
             formDataToSend.append('city', formData.city);
-            formDataToSend.append('contactPhone', formData.contactPhone);
+            formDataToSend.append('contactPhone', formData.contactPhone || '0300-0000000');
             formDataToSend.append('isFeatured', formData.isFeatured);
 
             // Add compatible makes as JSON string
@@ -111,7 +111,8 @@ const AddPart = () => {
             }, 2000);
         } catch (err) {
             console.error('Add part error:', err);
-            setError(err.response?.data?.message || 'Failed to add part. Please make sure you are logged in as admin.');
+            const errorMsg = err.response?.data?.message || err.response?.data?.error || 'Failed to add part. Please check your connection and required fields.';
+            setError(errorMsg);
         }
         setLoading(false);
     };
