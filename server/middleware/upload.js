@@ -1,43 +1,37 @@
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
 
-// Ensure uploads directory exists
-const uploadsDir = path.join(__dirname, '..', 'uploads');
-const carsDir = path.join(uploadsDir, 'cars');
-const avatarsDir = path.join(uploadsDir, 'avatars');
+// Configure Cloudinary
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
-[uploadsDir, carsDir, avatarsDir].forEach(dir => {
-    if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
+// Cloudinary storage for car images
+const carStorage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'carzar/cars',
+        allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif', 'bmp', 'tiff'],
+        transformation: [{ width: 1200, height: 800, crop: 'limit', quality: 'auto' }]
     }
 });
 
-// Storage configuration for car images
-const carStorage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, carsDir);
-    },
-    filename: function (req, file, cb) {
-        const uniqueName = `car-${Date.now()}-${Math.round(Math.random() * 1E9)}${path.extname(file.originalname)}`;
-        cb(null, uniqueName);
-    }
-});
-
-// Storage configuration for avatars
-const avatarStorage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, avatarsDir);
-    },
-    filename: function (req, file, cb) {
-        const uniqueName = `avatar-${Date.now()}-${Math.round(Math.random() * 1E9)}${path.extname(file.originalname)}`;
-        cb(null, uniqueName);
+// Cloudinary storage for avatars
+const avatarStorage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'carzar/avatars',
+        allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+        transformation: [{ width: 400, height: 400, crop: 'fill', quality: 'auto' }]
     }
 });
 
 // File filter - allow all common image types
 const imageFilter = (req, file, cb) => {
-    // Expanded list of allowed image types
     const allowedExtensions = /jpeg|jpg|png|gif|webp|heic|heif|avif|svg|bmp|tiff|tif|ico/;
     const allowedMimeTypes = [
         'image/jpeg',
@@ -61,7 +55,6 @@ const imageFilter = (req, file, cb) => {
     if (extname || mimetype) {
         return cb(null, true);
     } else {
-        // Still allow if it looks like an image
         if (file.mimetype.startsWith('image/')) {
             return cb(null, true);
         }
@@ -73,7 +66,7 @@ const imageFilter = (req, file, cb) => {
 const uploadCarImages = multer({
     storage: carStorage,
     limits: {
-        fileSize: 10 * 1024 * 1024, // 10MB per file
+        fileSize: 50 * 1024 * 1024, // 50MB per file
         files: 15 // Max 15 files
     },
     fileFilter: imageFilter
@@ -83,7 +76,7 @@ const uploadCarImages = multer({
 const uploadAvatar = multer({
     storage: avatarStorage,
     limits: {
-        fileSize: 5 * 1024 * 1024 // 5MB
+        fileSize: 10 * 1024 * 1024 // 10MB
     },
     fileFilter: imageFilter
 }).single('avatar');
@@ -122,5 +115,6 @@ const handleUpload = (uploadFn) => {
 
 module.exports = {
     uploadCarImages: handleUpload(uploadCarImages),
-    uploadAvatar: handleUpload(uploadAvatar)
+    uploadAvatar: handleUpload(uploadAvatar),
+    cloudinary
 };

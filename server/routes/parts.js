@@ -153,10 +153,10 @@ router.post('/', protect, uploadCarImages, async (req, res) => {
         const partData = { ...req.body };
         partData.seller = req.user._id;
 
-        // Handle image uploads
+        // Handle image uploads (Cloudinary)
         if (req.files && req.files.length > 0) {
             partData.images = req.files.map(file => ({
-                url: `/uploads/cars/${file.filename}`,
+                url: file.path,
                 publicId: file.filename
             }));
         }
@@ -225,7 +225,7 @@ router.put('/:id', protect, uploadCarImages, async (req, res) => {
 
         if (req.files && req.files.length > 0) {
             const newImages = req.files.map(file => ({
-                url: `/uploads/cars/${file.filename}`,
+                url: file.path,
                 publicId: file.filename
             }));
             updateData.images = [...(part.images || []), ...newImages];

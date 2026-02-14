@@ -291,7 +291,7 @@ router.put('/avatar', protect, uploadAvatar, async (req, res) => {
             });
         }
 
-        const avatarUrl = `/uploads/avatars/${req.file.filename}`;
+        const avatarUrl = req.file.path; // Cloudinary URL
 
         const user = await User.findByIdAndUpdate(
             req.user._id,
