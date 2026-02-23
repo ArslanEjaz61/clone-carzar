@@ -278,17 +278,21 @@ async function seedCars() {
             seller: seller._id
         }));
 
-        const result = await Car.insertMany(carsWithSeller);
+        // Use new + save (not insertMany) to trigger pre-save slug hook
+        const result = [];
+        for (const carData of carsWithSeller) {
+            const car = new Car(carData);
+            await car.save();
+            result.push(car);
+            console.log('  📌 ' + car.title + ' - PKR ' + car.price.toLocaleString() + ' (' + car.condition + ')');
+        }
+
         console.log('✅ Added ' + result.length + ' cars!');
 
         const usedCount = result.filter(c => c.condition === 'Used').length;
         const newCount = result.filter(c => c.condition === 'New').length;
         console.log('🚗 Used Cars: ' + usedCount);
         console.log('🆕 New Cars: ' + newCount);
-
-        result.forEach(car => {
-            console.log('  📌 ' + car.title + ' - PKR ' + car.price.toLocaleString() + ' (' + car.condition + ')');
-        });
 
         process.exit(0);
     } catch (error) {
