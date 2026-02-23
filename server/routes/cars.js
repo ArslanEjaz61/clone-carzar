@@ -431,14 +431,30 @@ router.put('/:id', protect, uploadCarImages, async (req, res) => {
 
         const updateData = { ...req.body };
 
+        // Handle existing images that user kept (not removed)
+        let keptImages = [];
+        if (req.body.existingImages) {
+            try {
+                keptImages = JSON.parse(req.body.existingImages);
+            } catch (e) {
+                keptImages = car.images || [];
+            }
+        }
+
         // Handle new uploaded images (Cloudinary)
+        let newImages = [];
         if (req.files && req.files.length > 0) {
-            const newImages = req.files.map(file => ({
+            newImages = req.files.map(file => ({
                 url: file.path,
                 publicId: file.filename
             }));
-            updateData.images = [...(car.images || []), ...newImages];
         }
+
+        // Combine kept existing + new uploaded images
+        updateData.images = [...keptImages, ...newImages];
+
+        // Clean up existingImages from updateData (it's not a model field)
+        delete updateData.existingImages;
 
         // Parse numeric fields
         if (updateData.price) updateData.price = parseInt(updateData.price);
